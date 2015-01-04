@@ -1,6 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Login extends baseController {
+include APPPATH.'controllers/BaseController.php';
+
+class Login extends BaseController {
 
 	function __construct() {
 		parent::__construct();
@@ -11,7 +13,6 @@ class Login extends baseController {
 		if ($this->isGET()){
 			$this->load->helper(array('form'));
 			$this->load->view('/admin/login_view.php');
-
 		}
 		else if ($this->isPOST()){
 			//This method will have the credentials validation
@@ -26,7 +27,7 @@ class Login extends baseController {
 			}
 			else {
 				// Go to private area
-				redirect('home', 'refresh');
+				redirect('admin/dashboard', 'refresh');
 			}
 		}
 	}
@@ -41,7 +42,7 @@ class Login extends baseController {
 			$userData = array();
 			foreach ($result as $row) {
 				$userData = array('id' => $row->id, 'username' => $row->username);
-				$this->session->set_userdata('userData', $userData);
+				$this->session->set_userdata('loginData', $userData);
 			}
 			return true;
 		}

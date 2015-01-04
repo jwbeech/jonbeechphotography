@@ -10,6 +10,12 @@
 |
 */
 
+$hook['post_controller_constructor'][] = array(
+	'class'    => 'PreControllerHook',
+	'function' => 'checkSession',
+	'filename' => 'PreControllerHook.php',
+	'filepath' => 'hooks'
+);
 
 
 /* End of file hooks.php */
