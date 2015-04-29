@@ -7,15 +7,19 @@
 	<link href="/static/css/main.css" rel="stylesheet">
 	<link href="/static/css/bootstrap.css" rel="stylesheet">
 
+	<script type="text/javascript" src="/static/js/vendor/jquery-2.1.3.js"></script>
+	<script type="text/javascript" src="/static/js/vendor/underscore.js"></script>
+	<script type="text/javascript" src="/static/js/home.js"></script>
 
-
-	<script data-main="/static/js/require_config.js" src="/static/js/lib/require.js"></script>
+	<script type="text/javascript">
+		var images = <?php echo json_encode($images); ?>;
+	</script>
 
 </head>
 
 <body>
-	<div class="imageTile">
-		Tiling here boet
+	<div id="imageTile">
+
 	</div>
 </body>
 </html>

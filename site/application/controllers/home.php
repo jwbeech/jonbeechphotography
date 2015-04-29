@@ -4,26 +4,30 @@ include APPPATH.'controllers/BaseController.php';
 
 class Home extends BaseController {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$directory	= "static/images/photos/";
+		$images 	= glob($directory . "*.jpg");
+		$json		= array();
+
+		foreach($images as $imagePath) {
+			$meta				= getimagesize($imagePath);
+			$obj				= new stdClass();
+			$obj->width			= $meta[0];
+			$obj->height		= $meta[1];
+			$obj->originalWidth	= $meta[0];
+			$obj->originalHeight= $meta[1];
+			$obj->url			= "/".$imagePath;
+			$json[]				= $obj;
+			//echo $meta['width'];
+			//print_r($meta);
+			//print_r($obj);
+			//echo '<br />';
+		}
+
+		$model = array(
+			'images' => $json
+		);
+		$this->load->view('home_view', $model);
 	}
 }
-
-/* End of file home.php */
-/* Location: ./application/controllers/home.php */
