@@ -40,7 +40,7 @@
 
 $route['default_controller'] = "home";
 $route['404_override'] = '';
-$route['admin'] = 'admin/login';
+$route['renderThumbs'] = 'home/renderThumbs';
 
 
 /* End of file routes.php */

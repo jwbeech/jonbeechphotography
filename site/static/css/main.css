@@ -1,15 +1,52 @@
 body {
-    padding: 50px 0;
-    background: #000;
+    background: #292929;
+    padding-top: 42px;
+    padding-bottom: 62px;
 }
+
 #imageTile{
-    background: #8d8d8d;
-    position: relative;
-    /*margin: 0 auto;
-    width: 1400px;*/
+    padding: 0 0 10px 0;
+    /*background: #000;*/
 }
-#imageTile img{
-    position: absolute;
-    top: 0;
+#imageTile .imgHolder{
+    float: left;
+    margin-top: 10px;
+    background: #cccccc;
+}
+#imageTile .imgHolder.middleImg{
+    margin-left: 10px;
+}
+
+#footer{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
     left: 0;
+    height: 60px;
+
+    /* Fallback for web browsers that doesn't support RGBa */
+    background: rgb(0, 0, 0) transparent;
+    /* RGBa with 0.6 opacity */
+    background: rgba(0, 0, 0, 0.8);
+    /* For IE 5.5 - 7*/
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+    /* For IE 8*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+}
+
+
+#footer #logo{
+    margin-top: 20px;
+    margin-left: 10px;
+    padding: 0;
+    width: 243px;
+    height: 23px;
+    background: url("../images/site/logo.png");
+    text-indent: -9999px;
+}
+
+/* Media query here */
+.sizingWrapper{
+    margin: 0 auto;
+    width: 1800px;
 }
