@@ -26,7 +26,7 @@ Class ImageService extends CI_Model
 			$this->db->query("DELETE FROM thumb_image");
 			$gap				= 10;
 			$heightRatio		= 400 / 1800;
-			$sizes				= array(1800, 1200);/*, 979, 676, 480, 320, 300);*/
+			$sizes				= array(1800, 1200, 979, 676, 480, 320, 300);
 			$process->totalSets	= count($sizes);
 
 			for ($i = 0; $i < count($sizes); $i++){
