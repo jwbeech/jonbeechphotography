@@ -7,10 +7,12 @@
 	<link href="/static/css/bootstrap.css" rel="stylesheet">
 	<link href="/static/css/main.css" rel="stylesheet">
 
-	<script type="text/javascript" src="/static/js/vendor/jquery-2.1.3.js"></script>
-	<script type="text/javascript" src="/static/js/vendor/underscore.js"></script>
-	<script type="text/javascript" src="/static/js/home.js"></script>
-
+	<script type="text/javascript" src="/static/js/vendor/require.js"></script>
+	<script type="text/javascript">
+		require(["static/js/require_config"], function(){
+			require(["home"])
+		});
+	</script>
 </head>
 
 <body>
@@ -18,15 +20,19 @@
 		<?php
 		foreach ($rows as $row){
 			for ($i = 0; $i < count($row); $i++){
+				$imgObj = $row[$i];
+
+				$output	= "";
 				if ($i == 0){
-					echo '<div class="imgHolder">';
+					$output = $output . '<div class="imgHolder"';
 				}
 				else{
-					echo '<div class="imgHolder middleImg">';
+					$output = $output . '<div class="imgHolder middleImg"';
 				}
-				$imgObj = $row[$i];
-				echo "<img src='$imgObj->src' width='$imgObj->width' height='$imgObj->height' />";
-				echo '</div>';
+				$output = $output . ' style="width:' . $imgObj->width . 'px; height:' . $imgObj->height . 'px; background-image:url(/' . $imgObj->src . ') ">';
+				$output = $output . '</div>';
+
+				echo $output;
 			}
 		}
 		?>

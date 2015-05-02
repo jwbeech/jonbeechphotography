@@ -89,7 +89,7 @@ class CI_Cache_apc extends CI_Driver {
 	/**
 	 * Cache Info
 	 *
-	 * @param 	string		user/filehits
+	 * @param 	string		ImageService/filehits
 	 * @return 	mixed		array on success, false on failure
 	 */
 	public function cache_info($type = NULL)

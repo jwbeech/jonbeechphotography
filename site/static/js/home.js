@@ -1,4 +1,8 @@
-$(function(){
-	$(".imgHolder").mouseover(function(e){
+define(["jquery"], function($){
+	$(function(){
+
+		function loadImageTilePage(){
+
+		}
 	});
 });

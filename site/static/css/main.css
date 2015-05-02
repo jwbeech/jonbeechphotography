@@ -1,12 +1,11 @@
 body {
     background: #292929;
     padding-top: 42px;
-    padding-bottom: 62px;
+    padding-bottom: 102px;
 }
 
 #imageTile{
     padding: 0 0 10px 0;
-    /*background: #000;*/
 }
 #imageTile .imgHolder{
     float: left;
@@ -48,5 +47,34 @@ body {
 /* Media query here */
 .sizingWrapper{
     margin: 0 auto;
-    width: 1800px;
+    overflow: hidden;
+    /*background: #fff;*/
+}
+
+@media only screen and (min-width : 1800px) and (max-width : 2000000px) {
+    .sizingWrapper{ width: 1800px; }
+}
+
+@media only screen and (max-width : 1800px) {
+    .sizingWrapper{ width: 1200px; }
+}
+
+@media only screen and (max-width : 1200px) {
+    .sizingWrapper{ width: 979px; }
+}
+
+@media only screen and (max-width : 979px) {
+    .sizingWrapper{ width: 767px; }
+}
+
+@media only screen and (max-width : 767px) {
+    .sizingWrapper{ width: 480px; }
+}
+
+@media only screen and (max-width : 480px) {
+    .sizingWrapper{ width: 320px; }
+}
+
+@media only screen and (max-width : 320px) {
+    .sizingWrapper{ width: 300px; }
 }

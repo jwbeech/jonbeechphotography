@@ -111,7 +111,7 @@ class CI_Cache extends CI_Driver_Library {
 	/**
 	 * Cache Info
 	 *
-	 * @param 	string		user/filehits
+	 * @param 	string		ImageService/filehits
 	 * @return 	mixed		array on success, false on failure
 	 */
 	public function cache_info($type = 'user')
