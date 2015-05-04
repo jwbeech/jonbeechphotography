@@ -4,7 +4,7 @@ class ProcessPercent
 {
     var $name;
     var $totalSets;
-	var $currentSet = 0;
+	var $currentSet = -1;
 
 	function __construct($name) {
 		$this->name = $name;
@@ -26,7 +26,7 @@ class ProcessPercent
 	public function getImagePercent($imgCnt, $totalImages){
 		$result				= new stdClass();
 		$result->name		= $this->name;
-		$result->percent	= $this->currentSet / $this->totalSets * 100;
+		$result->percent	= ($this->currentSet + 1) / $this->totalSets * 100;
 		$portion			= 1 / $this->totalSets * 100;
 		$miniPercent		= (($imgCnt + 1) / $totalImages) * $portion;
 		$result->percent	+= $miniPercent;

@@ -1,1 +1,4 @@
 .idea
+/site/static/images/photos
+/site/application/logs
+/PhotographyManager/target
