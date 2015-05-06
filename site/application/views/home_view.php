@@ -4,15 +4,19 @@
 	<meta charset="utf-8">
 	<title>Jonathan Beech Photography</title>
 
-	<link href="/static/css/bootstrap.css" rel="stylesheet">
-	<link href="/static/css/main.css" rel="stylesheet">
-
-	<script type="text/javascript" src="/static/js/vendor/require.js"></script>
-	<script type="text/javascript">
-		require(["static/js/require_config"], function(){
-			require(["home"])
-		});
-	</script>
+	<?php
+	$environment	= "production";
+	$version		= "0.1";
+	$pageName		= "home_view";
+	$developmentCSS	= array(
+		"/static/css/vendor/bootstrap.css",
+		"/static/css/main.css"
+	);
+	$productionCSS	= array(
+		"/static/css-min/main.css"
+	);
+	include "includes/header.php";
+	?>
 </head>
 
 <body>

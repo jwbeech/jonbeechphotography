@@ -1,0 +1,84 @@
+body {
+	background: #292929;
+	padding-top: 42px;
+	padding-bottom: 102px;
+}
+
+#imageTile{
+	padding: 0 0 10px 0;
+
+	.imgHolder{
+		float: left;
+		margin-top: 10px;
+		background: #cccccc;
+	}
+}
+
+#imageTile {
+	.imgHolder.middleImg{
+		margin-left: 10px;
+	}
+}
+
+#footer{
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	height: 60px;
+
+	/* Fallback for web browsers that doesn't support RGBa */
+	background: rgb(0, 0, 0) transparent;
+	/* RGBa with 0.6 opacity */
+	background: rgba(0, 0, 0, 0.8);
+	/* For IE 5.5 - 7*/
+	/*filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);*/
+	/* For IE 8*/
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+
+
+	#logo{
+		margin-top: 20px;
+		margin-left: 10px;
+		padding: 0;
+		width: 243px;
+		height: 23px;
+		background: url("../images/site/logo.png");
+		text-indent: -9999px;
+	}
+}
+
+/* Media query here */
+.sizingWrapper{
+	margin: 0 auto;
+	overflow: hidden;
+	/*background: #fff;*/
+}
+
+@media only screen and (min-width : 1800px) and (max-width : 2000000px) {
+	.sizingWrapper{ width: 1800px; }
+}
+
+@media only screen and (max-width : 1800px) {
+	.sizingWrapper{ width: 1200px; }
+}
+
+@media only screen and (max-width : 1200px) {
+	.sizingWrapper{ width: 979px; }
+}
+
+@media only screen and (max-width : 979px) {
+	.sizingWrapper{ width: 767px; }
+}
+
+@media only screen and (max-width : 767px) {
+	.sizingWrapper{ width: 480px; }
+}
+
+@media only screen and (max-width : 480px) {
+	.sizingWrapper{ width: 320px; }
+}
+
+@media only screen and (max-width : 320px) {
+	.sizingWrapper{ width: 300px; }
+}
