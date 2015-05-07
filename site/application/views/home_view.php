@@ -7,7 +7,7 @@
 	<?php
 	$environment	= "production";
 	$version		= "0.1";
-	$pageName		= "home_view";
+	$pageName		= basename(__FILE__, ".php");
 	$developmentCSS	= array(
 		"/static/css/vendor/bootstrap.css",
 		"/static/css/main.css"
