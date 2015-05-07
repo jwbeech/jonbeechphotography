@@ -1,4 +1,9 @@
 .idea
+node_modules
+*.iml
 /site/static/images/photos
 /site/application/logs
 /PhotographyManager/target
+/site/static/js-min
+/site/static/css-min
+/site/reports
