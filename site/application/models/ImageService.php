@@ -2,6 +2,7 @@
 
 include 'application/libraries/SourceImage.php';
 include 'application/libraries/ThumbImage.php';
+include 'application/libraries/ThumbRow.php';
 include 'application/libraries/StringUtil.php';
 include 'application/libraries/FileUtil.php';
 include 'application/libraries/ProcessPercent.php';
@@ -16,25 +17,22 @@ Class ImageService extends CI_Model
 	+----------------------------------------------*/
 	public function generateThumbsStoreData(){
 		if (is_null($this->completePercent())){
-			$process = new ProcessPercent(ImageService::CONVERT_PROCESS);
-			$this->db->insert("process", $process->getZeroPercent());
+			$result				= new stdClass();
+			$result->name		= ImageService::CONVERT_PROCESS;
+			$result->percent	= 0;
+			$this->db->insert("process", $result);
 
 			// Clear out the database
 			$this->db->query("DELETE FROM source_image");
 			$this->storeSourceImages();
 
 			$this->db->query("DELETE FROM thumb_image");
-			$gap				= 10;
-			$heightRatio		= 400 / 1800;
-			$sizes				= array(1800, 1200, 979, 676, 480, 320, 300);
-			$process->totalSets	= count($sizes);
+			$gap		= 10;
+			$height		= 400;
+			$pageWidths	= array(1800, 1200/*, 979, 767, 480, 320, 300*/);
+			$rows		= $this->generateThumbMemoryData($pageWidths, $height, $gap);
+			$this->generateThumbPhysicalData($pageWidths, $rows);
 
-			for ($i = 0; $i < count($sizes); $i++){
-				$width 		= $sizes[$i];
-				$this->generateThumbs($width, $gap, floor($width * $heightRatio), $process);
-
-				$this->db->update("process", $process->getSetPercent($i));
-			}
 			// Remove the process entry
 			$this->db->delete("process", array('name' => ImageService::CONVERT_PROCESS));
 		}
@@ -43,7 +41,7 @@ Class ImageService extends CI_Model
 	public function completePercent(){
 		$arResult	= $this->db->get("process", array('name' => ImageService::CONVERT_PROCESS));
 		$result		= $arResult->result();
-		return count($result) > 0 ? $result[0] : null;
+		return count($result) > 0 ? $result[0]["percent"] : null;
 	}
 
 	/*----------------------------------------------+
@@ -63,12 +61,14 @@ Class ImageService extends CI_Model
 		}
 	}
 
-	private function generateThumbs($width, $gap, $magicHeight, $process){
+	private function generateThumbMemoryData($pageWidths, $magicHeight, $gap){
+		$pageWidth		= $pageWidths[0];
+
 		// Get the source images
 		$imageResult	= $this->db->get('source_image');
 		$imageList		= $imageResult->result();
 
-		log_message("info", "Generating thumbs | \$width: $width, \$gap: $gap, \$magicHeight: $magicHeight");
+		log_message("info", "Generating thumbs | \$width: $pageWidth, \$gap: $gap, \$magicHeight: $magicHeight");
 
 		// Shuffle the list into portrait and landscape alternating
 		log_message("info", "Shuffling");
@@ -116,7 +116,7 @@ Class ImageService extends CI_Model
 				// If the gap left to fill is greater than the half the image width
 				// Add the current image
 				$totalGap	= $gap * count($row->images);
-				if ($imgObj->width / 2 < ($width - $totalGap) - $row->calcWidth){
+				if ($imgObj->width / 2 < ($pageWidth - $totalGap) - $row->calcWidth){
 					$totalImages++;
 					array_shift($imageList);
 					$row->images[]	= $imgObj;
@@ -126,7 +126,7 @@ Class ImageService extends CI_Model
 					if (count($row->images) == 0) throw new Exception("Failed to add even 1 image :(");
 					break;
 				}
-				if ($row->calcWidth >= $width){
+				if ($row->calcWidth >= $pageWidth){
 					break;
 				}
 
@@ -141,42 +141,114 @@ Class ImageService extends CI_Model
 		log_message("info", "Fixing widths");
 		foreach ($rows as $row){
 			$totalGap	= $gap * (count($row->images) - 1);
-			$n 			= ($width - $totalGap) / $row->calcWidth;
+			$n 			= ($pageWidth - $totalGap) / $row->calcWidth;
 			foreach ($row->images as $imgObj){
 				$imgObj->width	= $imgObj->width * $n;
 				$imgObj->height	= $imgObj->height * $n;
 			}
 		}
 
-		// Now lets build the images in order
-		$output = "static/images/photos/$width/";
-		FileUtil::recursiveRemove($output);
-		mkdir($output);
+		$magicRatio		= $magicHeight / $pageWidth;
+
+		// Lets create an image set for every page size
+		for ($r = 0; $r < count($rows); $r++) {
+			$row				= $rows[$r];
+
+			// Move the current width into its own set
+			$row->$pageWidth	= $row->images;
+
+			// Now run a loop for each other width
+			for ($w = 1; $w < count($pageWidths); $w++){
+				$currPageWidth		= $pageWidths[$w];
+				$currArr			= array();
+				$currHeight			= $currPageWidth * $magicRatio;
+
+				// Now run through the image list an generate new rows for this size
+				for ($i = 0; $i < count($row->images); $i++) {
+					$imgObj 		= $row->images[$i];
+					$newImg			= new stdClass();
+					$newImg->id		= $imgObj->id;
+					$newImg->url	= $imgObj->url;
+					// Set the height then scale the width proportionally
+					$newImg->height	= $currHeight;
+					$newImg->width	= $imgObj->width * ($currHeight / $imgObj->height);
+					$currArr[]		= $newImg;
+				}
+
+				// Assign to its own property
+				$row->$currPageWidth	= $currArr;
+			}
+		}
+
+		return $rows;
+	}
+
+	private function generateThumbPhysicalData($pageWidths, $rows){
+		// Now that all the data has been manipulated lets create database entries and images for every one
+		$totalImages			= 0;
+
+		// Lets create an image set for every page size
+		for ($r = 0; $r < count($rows); $r++) {
+			$row			= $rows[$r];
+			$totalImages	+= count($pageWidths) * count($row->images);
+		}
+
+
+		// First clear all the folders
+		foreach ($pageWidths as $currWidth){
+			$output = "static/images/photos/$currWidth/";
+			FileUtil::recursiveRemove($output);
+			mkdir($output);
+		}
+
+		// Now lets get stuck into generation
 		$cnt	= 0;
+		for ($r = 0; $r < count($rows); $r++) {
+			$row 			= $rows[$r];
+			$dbRow			= new ThumbRow();
+			$dbRow->number	= $r;
+			$this->db->insert("thumb_row", $dbRow);
+			$rowId			= $this->db->insert_id();
 
-		for ($r = 0; $r < count($rows); $r++){
-			$row = $rows[$r];
-			for ($i = 0; $i < count($row->images); $i++){
-				$imgObj		= $row->images[$i];
-				$fileName	= StringUtil::padNumber($r) . "_" . StringUtil::padNumber($i, 2) . ".jpg";
-				$outputFile = $output . $fileName;
-				log_message("info", "Resizing and outputting file: $imgObj->url -> $outputFile");
-				$image 		= new \Eventviva\ImageResize(substr($imgObj->url, 1));
-				$image->resize($imgObj->width, $imgObj->height);
-				$image->save($outputFile, IMAGETYPE_JPEG, 100);
+			for ($w = 0; $w < count($pageWidths); $w++){
+				$currPageWidth		= $pageWidths[$w];
+				$currArr			= $row->$currPageWidth;
 
-				// Add the data base entry
-				$thumb					= new ThumbImage();
-				$thumb->source_image_id	= $imgObj->id;
-				$thumb->page_width		= $width;
-				$thumb->width			= $imgObj->width;
-				$thumb->height			= $imgObj->height;
-				$thumb->url				= "/" . $outputFile;
-				$thumb->row_number		= $r;
-				$this->db->insert("thumb_image", $thumb);
+				for ($i = 0; $i < count($currArr); $i++) {
+					$imgObj			= $currArr[$i];
+					// Fix sizes
+					$imgObj->width	= floor($imgObj->width);
+					$imgObj->height	= floor($imgObj->height);
 
-				$this->db->update("process", $process->getImagePercent($cnt, $totalImages));
-				$cnt++;
+					// First generate the image
+					$fileName		= StringUtil::padNumber($r) . "_" . StringUtil::padNumber($i, 2) . ".jpg";
+					$outputFile 	= "static/images/photos/$currPageWidth/" . $fileName;
+
+					log_message("info", "Resizing and outputting file: $outputFile");
+
+					$image 			= new \Eventviva\ImageResize(substr($imgObj->url, 1));
+					$image->resize($imgObj->width, $imgObj->height);
+					$image->save($outputFile, IMAGETYPE_JPEG, 100);
+
+
+					// Then the DB entry
+					$dbImg					= new ThumbImage();
+					$dbImg->source_image_id	= $imgObj->id;
+					$dbImg->page_width		= $currPageWidth;
+					$dbImg->width			= $imgObj->width;
+					$dbImg->height			= $imgObj->height;
+					$dbImg->url				= "/" . $outputFile;
+					$dbImg->thumb_row_id	= $rowId;
+					$this->db->insert("thumb_image", $dbImg);
+
+					// Update the percent
+					$cnt++;
+					$process			= new stdClass();
+					$process->name		= ImageService::CONVERT_PROCESS;
+					$process->percent	= $cnt / $totalImages * 100;
+					$this->db->update("process", $process);
+				}
+
 			}
 		}
 	}

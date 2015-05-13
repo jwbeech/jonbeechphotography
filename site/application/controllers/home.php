@@ -5,7 +5,12 @@ include 'application/controllers/BaseController.php';
 class Home extends BaseController {
 
 	public function index() {
-		$images 	= glob("static/images/photos/1800/*.jpg");
+		$this->load->view("home_view");
+	}
+
+	public function fetchThumbs(){
+		$size		= $this->input->get("size");
+		$images 	= glob("static/images/photos/$size/*.jpg");
 		$json		= array();
 
 		foreach($images as $imagePath) {
@@ -30,19 +35,31 @@ class Home extends BaseController {
 			$json[$rowNum][$imgNum]	= $obj;
 		}
 
-		$model = array(
-			'rows' => $json
-		);
-		$this->load->view('home_view', $model);
-	}
-
-	public function admin(){
-
+		$this->output->set_content_type('application/json');
+		$this->output->set_output(json_encode($json));
 	}
 
 	public function renderThumbs(){
 		$this->load->model("ImageService");
+		$percent		= $this->ImageService->completePercent();
+		$model			= new stdClass();
+		$model->busy	= !is_null($percent);
+		$model->percent	= $percent;
+		$this->load->view("render_view", $model);
+	}
+
+	public function doThumbRendering(){
+		$this->load->model("ImageService");
 		$this->ImageService->generateThumbsStoreData();
 		log_message("info", "Completed");
+	}
+	public function thumbStatus(){
+		$this->load->model("ImageService");
+		$percent		= $this->ImageService->completePercent();
+		$model			= new stdClass();
+		$model->busy	= !is_null($percent);
+		$model->percent	= $percent;
+		$this->output->set_content_type('application/json');
+		$this->output->set_output(json_encode($model));
 	}
 }

@@ -7,6 +7,6 @@ Class ThumbImage
 	var $width;
 	var $height;
 	var $url;
-	var $row_number;
+	var $thumb_row_id;
 }
 ?>

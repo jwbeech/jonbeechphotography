@@ -9,6 +9,13 @@ CREATE TABLE `source_image` (
   `url` VARCHAR( 255 ) NOT NULL
 ) ENGINE = InnoDB;
 
+DROP TABLE IF EXISTS `thumb_row`;
+CREATE TABLE IF NOT EXISTS `thumb_row` (
+  `id` int(12) NOT NULL AUTO_INCREMENT,
+  `number` int(12) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
 DROP TABLE IF EXISTS `thumb_image`;
 CREATE TABLE `thumb_image` (
   `id` INT( 12 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
@@ -17,8 +24,8 @@ CREATE TABLE `thumb_image` (
   `width` INT( 12 ) NOT NULL ,
   `height` INT( 12 ) NOT NULL ,
   `url` VARCHAR( 255 ) NOT NULL ,
-  `row_number` INT NOT NULL ,
-  INDEX ( `source_image_id` , `row_number` )
+  `thumb_row_id` INT NOT NULL ,
+  INDEX ( `source_image_id` , `thumb_row_id` )
 ) ENGINE = InnoDB;
 
 

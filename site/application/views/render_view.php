@@ -21,13 +21,11 @@
 
 </head>
 
-<body>
-	<div id="imageTile" class="sizingWrapper clearfix">
-	</div>
-	<div id="footer">
-		<div class="sizingWrapper">
-			<h1 id="logo">Jon Beech Photography</h1>
-		</div>
+<body class="rendering">
+	<h1>Thumb rendering page</h1>
+	<hr />
+	<button type="button" class="btn btn-default" id="renderBtn" disabled>Render Thumbs Now</button>
+	<div id="percent">
 	</div>
 </body>
 </html>
