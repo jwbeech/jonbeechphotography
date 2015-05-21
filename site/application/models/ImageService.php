@@ -44,6 +44,12 @@ Class ImageService extends CI_Model
 		return count($result) > 0 ? $result[0]["percent"] : null;
 	}
 
+	public function fetchPage(){
+		$arResult	= $this->db->get("process", array('name' => ImageService::CONVERT_PROCESS));
+		$result		= $arResult->result();
+		return $result;
+	}
+
 	/*----------------------------------------------+
 	| PRIVATE METHODS								|
 	+----------------------------------------------*/

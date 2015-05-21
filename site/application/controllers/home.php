@@ -8,6 +8,11 @@ class Home extends BaseController {
 		$this->load->view("home_view");
 	}
 
+	public function fetchPage($page){
+		$rowsPerPage	= 5;
+
+	}
+
 	public function fetchThumbs(){
 		$size		= $this->input->get("size");
 		$images 	= glob("static/images/photos/$size/*.jpg");
