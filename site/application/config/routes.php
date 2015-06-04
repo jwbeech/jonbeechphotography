@@ -41,7 +41,7 @@
 $route['default_controller']	= "home/fetchPage/1";
 $route['page/(:num)']			= "home/fetchPage/$1";
 $route['404_override'] 			= '';
-$route['renderThumbs'] 			= 'home/renderThumbs';
+$route['renderThumbs'] 			= 'admin/renderThumbs';
 
 
 /* End of file routes.php */

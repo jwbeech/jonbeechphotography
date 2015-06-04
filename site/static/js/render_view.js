@@ -6,14 +6,14 @@ define(function(){
 		$renderBtn.click(function(e){
 			e.preventDefault();
 			$.ajax({
-				url	: "home/doThumbRendering"
+				url	: "admin/doThumbRendering"
 			});
 			setTimeout(checkStatus, 300);
 		});
 
 		function checkStatus(){
 			$.ajax({
-				url		: "home/thumbStatus",
+				url		: "admin/thumbStatus",
 				success	: function(json){
 					updateUI(json);
 				}
