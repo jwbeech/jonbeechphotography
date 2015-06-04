@@ -4,20 +4,7 @@
 	<meta charset="utf-8">
 	<title>Jonathan Beech Photography</title>
 
-	<?php
-	$environment	= "development";
-	$version		= "0.1";
-	$pageName		= basename(__FILE__, ".php");
-	$developmentCSS	= array(
-		"/static/css/vendor/bootstrap.css",
-		"/static/css/vendor/fonts.css",
-		"/static/css/main.css"
-	);
-	$productionCSS	= array(
-		"/static/css-min/main.css"
-	);
-	include "includes/header.php";
-	?>
+	<?php include "header.php";?>
 
 </head>
 

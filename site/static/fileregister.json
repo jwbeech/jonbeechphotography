@@ -1,26 +1,29 @@
 {
 	"development" : {
 		"css": [
-			"css/customBootstrap.css",
-			"css/main.css"
+			"static/css/customBootstrap.css",
+			"static/css/main.css"
 		],
 		"js": [
-			"bower_components/jquery/dist/jquery.js",
-			"bower_components/jquery-validation/dist/jquery.validate.js",
-			"app/vendor/bootstrap.js",
+			"static/bower_components/jquery/dist/jquery.js",
+			"static/bower_components/jquery-validation/dist/jquery.validate.js",
+			"static/app/vendor/bootstrap.js",
 
-			"bower_components/angular/angular.js",
-			"bower_components/angular-ui-router/release/angular-ui-router.js",
-			"bower_components/angular-cookies/angular-cookies.js",
-			"bower_components/angular-ui-utils/validate.js",
+			"static/bower_components/angular/angular.js",
+			"static/bower_components/angular-ui-router/release/angular-ui-router.js",
+			"static/bower_components/angular-cookies/angular-cookies.js",
 
-			"app/app.js",
-			"app/config/routes.js",
-			"app/config/http.js"
+			"static/app/app.js",
+			"static/app/config/routes.js",
+			"static/app/config/http.js",
+
+			"static/app/sections/gallery/gallery-controller.js",
+			"static/app/sections/gallery/gallery-sizer.js",
+			"static/app/sections/gallery/gallery-service.js"
 		]
 	},
 	"production": {
-		"css"	: ["css/application.css"],
-		"js"	: ["js/application.js"]
+		"css"	: ["static/css/application.css"],
+		"js"	: ["static/js/application.js"]
 	}
 }
