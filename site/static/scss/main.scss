@@ -1,3 +1,18 @@
+// Bootstrap Overrides
+@import "customBootstrapVariables";
+
+// Bootstrap imports
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables";
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_mixins";
+
+// Project specific
+@import "applicationVariables";
+@import "mixins/_mixins";
+
+// Default to box sizing
+html { box-sizing: border-box; }
+*, *:before, *:after { box-sizing: inherit; }
+
 body {
 	background: #292929;
 	padding-top: 42px;

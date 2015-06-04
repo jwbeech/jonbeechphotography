@@ -1,0 +1,18 @@
+{
+  "name": "JonBeechPhotography",
+  "version": "0.0.1",
+  "authors": [
+    "Jonathan Beech"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "jquery": "~2.1.4",
+    "angular": "~1.4.0",
+    "angular-cookies": "~1.4.0",
+    "jquery-validation": "~1.13.1",
+    "bootstrap": "~3.3.4",
+    "bootstrap-sass": "~3.3.4",
+    "angular-mocks": "~1.4.0",
+    "angular-ui-router": "~0.2.15"
+  }
+}

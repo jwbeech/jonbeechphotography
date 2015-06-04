@@ -1,0 +1,26 @@
+{
+	"development" : {
+		"css": [
+			"css/customBootstrap.css",
+			"css/main.css"
+		],
+		"js": [
+			"bower_components/jquery/dist/jquery.js",
+			"bower_components/jquery-validation/dist/jquery.validate.js",
+			"app/vendor/bootstrap.js",
+
+			"bower_components/angular/angular.js",
+			"bower_components/angular-ui-router/release/angular-ui-router.js",
+			"bower_components/angular-cookies/angular-cookies.js",
+			"bower_components/angular-ui-utils/validate.js",
+
+			"app/app.js",
+			"app/config/routes.js",
+			"app/config/http.js"
+		]
+	},
+	"production": {
+		"css"	: ["css/application.css"],
+		"js"	: ["js/application.js"]
+	}
+}

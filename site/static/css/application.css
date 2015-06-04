@@ -1,0 +1,37 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+#nav {
+  margin-top: 10px;
+}
+
+.app-center {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.dropdown-nav-title {
+  padding: 3px 20px;
+  white-space: nowrap;
+}
+
+.footer-nav {
+  margin: 0 auto;
+  display: inline-block;
+}
+
+.form-error {
+  color: #ff0000;
+  display: block;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.spaceRight10 {
+  margin-right: 10px;
+}
