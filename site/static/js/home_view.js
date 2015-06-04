@@ -53,7 +53,7 @@ define(["./ImageViewer"], function(ImageViewer){
 
 		$("a.imgLink").click(function(e){
 			e.preventDefault();
-		})
+		});
 
 
 

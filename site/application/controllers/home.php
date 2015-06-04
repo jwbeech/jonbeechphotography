@@ -8,12 +8,14 @@ class Home extends BaseController {
 		$this->load->view("home_view");
 	}
 
-	public function fetchPage($page){
-		$rowsPerPage	= 5;
-
+	public function fetchPage($pageNumber){
+		$this->load->model("ImageService");
+		if (!isset($pageNumber)) $pageNumber = 1;
+		$rows = $this->ImageService->fetchPage($pageNumber, 5);
+		$this->renderJSON($rows);
 	}
 
-	public function fetchThumbs(){
+	/*public function fetchThumbs(){
 		$size		= $this->input->get("size");
 		$images 	= glob("static/images/photos/$size/*.jpg");
 		$json		= array();
@@ -39,10 +41,8 @@ class Home extends BaseController {
 			// Push into the right place
 			$json[$rowNum][$imgNum]	= $obj;
 		}
-
-		$this->output->set_content_type('application/json');
-		$this->output->set_output(json_encode($json));
-	}
+		$this->renderJSON($json);
+	}*/
 
 	public function renderThumbs(){
 		$this->load->model("ImageService");
@@ -66,5 +66,10 @@ class Home extends BaseController {
 		$model->percent	= $percent;
 		$this->output->set_content_type('application/json');
 		$this->output->set_output(json_encode($model));
+	}
+
+	private function renderJSON($json){
+		$this->output->set_content_type('application/json');
+		$this->output->set_output(json_encode($json));
 	}
 }
