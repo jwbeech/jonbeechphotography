@@ -42,7 +42,7 @@ Class AdminImageService extends CI_Model
 	public function completePercent(){
 		$arResult	= $this->db->get("process", array('name' => AdminImageService::CONVERT_PROCESS));
 		$result		= $arResult->result();
-		return count($result) > 0 ? $result[0]["percent"] : null;
+		return count($result) > 0 ? $result[0]->percent : null;
 	}
 
 	/*----------------------------------------------+

@@ -10,11 +10,14 @@ body {
   background: #292929;
   padding-top: 42px;
   padding-bottom: 102px;
-  font-family: "soleil-1";
+  /*font-family: "soleil-1";*/
 }
 
-body.rendering {
+.renderpage {
   background: #ffffff;
+  padding: 10px 20px 50px 20px;
+  margin: 0 auto;
+  width: 800px;
 }
 
 a.fadeInUp:hover {

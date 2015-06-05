@@ -1,0 +1,13 @@
+<div class="gallery-sizer" ng-style="sizeStyle">
+	<div ng-show="imageData.length > 0">
+		<div ng-repeat="row in imageData track by $index">
+			<div
+				class="imgHolder"
+				ng-repeat="image in row[size] track by image.id"
+				ng-class="{middleImg:$index > 0}"
+				ng-style="{width:image.width, height:image.height, background:'url(' + image.url + ')'}">
+				<a href='#' data-id='' class='imgLink animated1s fadeInUp'></a>
+			</div>
+		</div>
+	</div>
+</div>

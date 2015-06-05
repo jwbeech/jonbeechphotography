@@ -1,14 +1,21 @@
 angular.module("jonphoto").directive("gallerySizer", ["$window", "$timeout", function($window, $timeout){
 	return {
-		templateUrl: "/static/app/sections/gallery/gallery-sizer.html",
+		templateUrl: "/static/app/sections/gallery/gallery-sizer/gallery-sizer.html",
 		restrict: "A",
 		scope: {
-			imageData: "@",
+			imageData: "=",
 			size: "@",
-			sizeStyle: "@"
+			sizeStyle: "@",
+			formattedData: "@"
 		},
 		link: function($scope, $element, $attrs){
 			var windowEle = angular.element($window);
+			// When data changes make sure the size is not set and rerun
+			$scope.$watch("imageData", function(newValue, oldValue){
+				console.log("imageData Change Made");
+				$scope.size = null;
+				doResize();
+			});
 			windowEle.bind("resize", doResize);
 
 			var sizes 	= [
@@ -48,6 +55,18 @@ angular.module("jonphoto").directive("gallerySizer", ["$window", "$timeout", fun
 					console.log("Populating size for ", size);
 					$scope.size 		= size;
 					$scope.sizeStyle	= {width:size + "px"};
+					// Prune data
+					/*var newData			= [];
+					console.log($scope.imageData);
+					if ($scope.imageData){
+						var strSize				= String(size);
+						console.log(strSize);
+						for (var i = 0; i < $scope.imageData.length; i++){
+							console.log($scope.imageData[i]);
+							newData.push($scope.imageData[i][strSize]);
+						}
+						$scope.formattedData	= newData;
+					}*/
 					$timeout(function(){
 						$scope.$apply();
 					});

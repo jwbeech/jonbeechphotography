@@ -10,7 +10,6 @@ class Admin extends CI_Controller {
 		$model->percent	= $percent;
 		$this->load->view("render_view", $model);
 	}
-
 	public function doThumbRendering(){
 		$this->load->model("AdminImageService");
 		$this->AdminImageService->generateThumbsStoreData();

@@ -5,6 +5,7 @@ angular.module("jonphoto").controller("GalleryController", ["GalleryService", "$
 	self.fetchPage = function(pageNumber){
 		GalleryService.fetchPage(pageNumber).then(
 			function(response){
+				console.log("response: ", response);
 				self.imageData = response.data;
 			}
 		)

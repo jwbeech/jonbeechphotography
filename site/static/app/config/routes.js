@@ -7,4 +7,10 @@ angular.module("jonphoto").config(["$stateProvider", "$urlRouterProvider", funct
 		templateUrl		: "/static/app/sections/gallery/gallery.html",
 		controller		: "GalleryController as ctrl"
 	});
+
+	$stateProvider.state("render", {
+		url				: "/render",
+		templateUrl		: "/static/app/sections/render/render.html",
+		controller		: "RenderController as ctrl"
+	});
 }]);

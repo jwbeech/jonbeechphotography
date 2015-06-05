@@ -18,8 +18,10 @@
 			"static/app/config/http.js",
 
 			"static/app/sections/gallery/gallery-controller.js",
-			"static/app/sections/gallery/gallery-sizer.js",
-			"static/app/sections/gallery/gallery-service.js"
+			"static/app/sections/gallery/gallery-service.js",
+			"static/app/sections/gallery/gallery-sizer/gallery-sizer.js",
+
+			"static/app/sections/render/render-controller.js"
 		]
 	},
 	"production": {

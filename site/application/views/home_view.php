@@ -9,12 +9,7 @@
 </head>
 
 <body>
-	<div ui-view></div>
-
-	<div id="footer">
-		<div class="sizingWrapper">
-			<h1 id="logo">Jon Beech Photography</h1>
-		</div>
-	</div>
+<ui-view></ui-view>
 </body>
+
 </html>
