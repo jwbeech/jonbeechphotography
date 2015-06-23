@@ -1,8 +1,8 @@
 {
 	"development" : {
 		"css": [
-			"static/css/customBootstrap.css",
-			"static/css/main.css"
+			"static/stylesheets/customBootstrap.css",
+			"static/stylesheets/main.css"
 		],
 		"js": [
 			"static/bower_components/jquery/dist/jquery.js",

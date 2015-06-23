@@ -6,6 +6,7 @@ Class ImageService extends CI_Model
 	| PUBLIC METHODS								|
 	+----------------------------------------------*/
 	public function fetchPage($pageNumber, $limit){
+		$pageNumber	= $pageNumber * 1;
 		$offset		= ($pageNumber - 1) * $limit;
 		// First select the rows, store ids and min row
 		$rows		= $this->db->get("thumb_row", $limit, $offset)->result();
@@ -35,7 +36,15 @@ Class ImageService extends CI_Model
 			}
 			$rows[$rowIndex][$image->page_width][] = $image;
 		}
-		return $rows;
+
+		$model 					= new stdClass();
+		$model->rows			= $rows;
+		$model->pageNumber		= $pageNumber;
+		$model->offset			= $offset;
+		$model->limit			= $limit;
+		$model->totalEntries	= $this->db->count_all("thumb_row");
+		$model->totalPages		= ceil($model->totalEntries / $limit);
+		return $model;
 	}
 
 

@@ -67,7 +67,7 @@ a.fadeInUp:hover {
 	overflow: hidden;
 
 	padding: 0 0 10px 0;
-	background: #ffffff;
+	/*background: #ffffff;*/
 
 	div.imgHolder{
 		float: left;
@@ -88,5 +88,9 @@ a.fadeInUp:hover {
 	}
 	a.imgLink:hover{
 		background: url("../images/site/imgOverlay.png") repeat-x 0 bottom;
+	}
+
+	div.page-controls{
+		padding: 10px 0 0 0;
 	}
 }

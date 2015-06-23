@@ -55,18 +55,6 @@ angular.module("jonphoto").directive("gallerySizer", ["$window", "$timeout", fun
 					console.log("Populating size for ", size);
 					$scope.size 		= size;
 					$scope.sizeStyle	= {width:size + "px"};
-					// Prune data
-					/*var newData			= [];
-					console.log($scope.imageData);
-					if ($scope.imageData){
-						var strSize				= String(size);
-						console.log(strSize);
-						for (var i = 0; i < $scope.imageData.length; i++){
-							console.log($scope.imageData[i]);
-							newData.push($scope.imageData[i][strSize]);
-						}
-						$scope.formattedData	= newData;
-					}*/
 					$timeout(function(){
 						$scope.$apply();
 					});
