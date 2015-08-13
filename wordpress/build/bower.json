@@ -1,0 +1,18 @@
+{
+  "name": "JonBeechPhotography",
+  "version": "0.0.1",
+  "authors": [
+    "Jonathan Beech"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "jquery": "~2.1.4",
+    "angular": "1.3.17",
+    "angular-route": "~1.4.3",
+    "bootstrap-sass": "~3.3.5",
+    "angular-ui-router": "~0.2.15"
+  },
+  "resolutions": {
+    "angular": "1.3.17"
+  }
+}

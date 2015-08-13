@@ -1,0 +1,45 @@
+html {
+	box-sizing: border-box;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+body {
+	background: #292929;
+	padding-top: 42px;
+	padding-bottom: 102px;
+	/*font-family: "soleil-1";*/
+}
+
+.renderpage {
+	background: #ffffff;
+	padding: 10px 20px 50px 20px;
+	margin: 0 auto;
+	width: 800px;
+}
+
+a.fadeInUp:hover {
+	-webkit-animation-name: fadeInUp;
+	animation-name: fadeInUp;
+}
+
+#footer {
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	height: 60px;
+	background: rgba(0, 0, 0, 0.8);
+}
+
+#footer #logo {
+	margin-top: 20px;
+	margin-left: 10px;
+	padding: 0;
+	width: 243px;
+	height: 23px;
+	background: url("../images/logo.png");
+	text-indent: -9999px;
+}
