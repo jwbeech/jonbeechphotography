@@ -1,0 +1,7 @@
+<div class="imageGrid">
+	<div class="clearfix" ng-repeat="row in templateRows" ng-style="{'margin-top':gapPercent + '%'}">
+		<div class="cell clearfix" ng-repeat="cell in row" ng-style="{width:cell.widthPercent + '%'}" ng-class="{divider:cell.type == 'divider'}">
+			<img ng-src="{{cell.attachment_meta.sizes.medium.url}}" ng-if="cell.type != 'divider'">
+		</div>
+	</div>
+</div>

@@ -16,9 +16,7 @@ $fileData	= $env == "development" ? $json["development"] : $json["production"];
 </head>
 
 <body>
-	<div ng-view autoscroll>
-		<span>Loading...</span>
-	</div>
+	<div ui-view></div>
 
 	<div id="footer">
 		<div class="sizingWrapper">

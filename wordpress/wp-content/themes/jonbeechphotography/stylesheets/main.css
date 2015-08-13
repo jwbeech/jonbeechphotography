@@ -8,16 +8,8 @@ html {
 
 body {
 	background: #292929;
-	padding-top: 42px;
-	padding-bottom: 102px;
-	/*font-family: "soleil-1";*/
-}
-
-.renderpage {
-	background: #ffffff;
-	padding: 10px 20px 50px 20px;
-	margin: 0 auto;
-	width: 800px;
+	color: #ffffff;
+	text-align: center;
 }
 
 a.fadeInUp:hover {
@@ -42,4 +34,25 @@ a.fadeInUp:hover {
 	height: 23px;
 	background: url("../images/logo.png");
 	text-indent: -9999px;
+}
+
+.imageGrid {
+	padding: 40px 40px 100px 40px;
+}
+
+.imageGrid .cell {
+	float: left;
+}
+
+.imageGrid .cell img {
+	width: 100%;
+	float: left;
+}
+
+.imageGrid .cell.divider {
+	height: 1px;
+}
+
+.imageGrid .verticalSpacer {
+	float: left;
 }

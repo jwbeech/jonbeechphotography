@@ -7,3 +7,4 @@ node_modules
 /site/reports
 node_modules
 bower_components
+wordpress/wp-content/uploads

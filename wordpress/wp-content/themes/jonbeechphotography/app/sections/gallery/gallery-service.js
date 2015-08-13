@@ -3,24 +3,14 @@ angular.module("jonphoto").factory("GalleryService", ["$http", "$q", function($h
 		pageSize: 30,
 
 		fetchPageImages : function(pageNumber){
-			return $http({
-				url		: "/wp-json/media",
-				method	: "GET",
-				data	: {
-					"filter[posts_per_page]": this.pageSize,
-					"page": pageNumber
-				}
-			});
+			return $http.get("/wp-json/media?filter[posts_per_page]=" + this.pageSize + "&page=" + pageNumber)
 		},
 		checkHasNextPage : function(pageNumber){
-			return $http({
-				url		: "/wp-json/media",
-				method	: "GET",
-				data	: {
-					"filter[posts_per_page]": this.pageSize,
-					"page": pageNumber + 1
-				}
-			})
+			var url = "/wp-json/media";
+			url		+= "?filter[posts_per_page]=" + this.pageSize;
+			url		+= "&page=" + (pageNumber + 1);
+
+			return $http.get(url)
 				.then(function(response){
 					if (response.data.length == 0){
 						return $q.reject();

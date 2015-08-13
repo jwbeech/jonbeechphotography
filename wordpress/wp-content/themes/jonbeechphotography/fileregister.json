@@ -11,11 +11,11 @@
 			"/wp-content/themes/jonbeechphotography/bower_components/angular-ui-router/release/angular-ui-router.js",
 
 			"/wp-content/themes/jonbeechphotography/app/app.js",
-			"/wp-content/themes/jonbeechphotography/app/config/http.js",
 			"/wp-content/themes/jonbeechphotography/app/config/routes.js",
 
 			"/wp-content/themes/jonbeechphotography/app/sections/gallery/gallery-controller.js",
-			"/wp-content/themes/jonbeechphotography/app/sections/gallery/gallery-service.js"
+			"/wp-content/themes/jonbeechphotography/app/sections/gallery/gallery-service.js",
+			"/wp-content/themes/jonbeechphotography/app/sections/gallery/image-grid/image-grid-directive.js"
 		]
 	},
 	"production": {
