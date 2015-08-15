@@ -1,7 +1,7 @@
 angular.module("jonphoto").directive("imageGrid", [function(){
 	return {
 		templateUrl: "/wp-content/themes/jonbeechphotography/app/sections/gallery/image-grid/image-grid.html",
-		restrict: "A",
+		restrict: "AE",
 		scope: {
 			imageData: "="
 		},

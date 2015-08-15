@@ -10,6 +10,14 @@ body {
 	background: #292929;
 	color: #ffffff;
 	text-align: center;
+	padding-bottom: 60px;
+}
+
+img.gears {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -60px 0 0 -60px;
 }
 
 a.fadeInUp:hover {
@@ -22,26 +30,46 @@ a.fadeInUp:hover {
 	width: 100%;
 	bottom: 0;
 	left: 0;
-	height: 60px;
 	background: rgba(0, 0, 0, 0.8);
 }
 
 #footer #logo {
-	margin-top: 20px;
-	margin-left: 10px;
-	padding: 0;
-	width: 243px;
-	height: 23px;
-	background: url("../images/logo.png");
-	text-indent: -9999px;
+	padding: 10px 0 10px 40px;
+	font-size: 26px;
+	text-align: left;
+	font-weight: 300;
+	font-family: 'Raleway', sans-serif;
+	color: #cdcdcd;
 }
 
 .imageGrid {
-	padding: 40px 40px 100px 40px;
+	padding: 40px 40px 40px 40px;
 }
 
 .imageGrid .cell {
 	float: left;
+	position: relative;
+}
+
+.imageGrid .cell a.imgBorder {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	z-index: 1000;
+	color: #818181;
+	-webkit-transition: border 0.2s ease-out;
+	-o-transition: border 0.2s ease-out;
+	transition: border 0.2s ease-out;
+}
+
+.imageGrid .cell a.imgBorder:hover {
+	color: #818181;
+	border: 14px solid #818181;
+	-webkit-transition: border 0.2s ease-in;
+	-o-transition: border 0.2s ease-in;
+	transition: border 0.2s ease-in;
 }
 
 .imageGrid .cell img {
@@ -55,4 +83,19 @@ a.fadeInUp:hover {
 
 .imageGrid .verticalSpacer {
 	float: left;
+}
+
+.imageGrid .pageBtn {
+	font-size: 16px;
+}
+
+.pageButtonHolder {
+	padding: 0 40px 40px 40px;
+}
+
+.pageBtn {
+	padding: 15px 40px;
+	color: #ffffff;
+	background: #4f4f4f;
+	text-transform: uppercase;
 }

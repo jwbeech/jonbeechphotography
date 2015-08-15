@@ -1,3 +1,7 @@
-<div class="clearfix" image-grid="" image-data="ctrl.imageData">
-Loading...
+<image-grid image-data="ctrl.imageData" show-previous="ctrl.pageNumber > 1" show-next="ctrl.hasNewPage">
+</image-grid>
+
+<div class="clearfix pageButtonHolder" ng-show="ctrl.imageData.length > 0">
+	<button type="button" class="btn pageBtn pull-left" ng-show="ctrl.pageNumber > 1" ng-click="ctrl.fetchPreviousPage()">Previous Page</button>
+	<button type="button" class="btn pageBtn pull-right" ng-show="ctrl.imageData.length > 0" ng-click="ctrl.fetchNextPage()">Next Page</button>
 </div>

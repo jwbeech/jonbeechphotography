@@ -19,6 +19,14 @@ body {
 	background: #292929;
 	color: #ffffff;
 	text-align: center;
+	padding-bottom: 60px;
+}
+
+img.gears{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -60px 0 0 -60px;
 }
 
 a.fadeInUp:hover {
@@ -32,27 +40,43 @@ a.fadeInUp:hover {
 	width: 100%;
 	bottom: 0;
 	left: 0;
-	height: 60px;
 
 	background: rgba(0, 0, 0, 0.8);
 
 	#logo{
-		margin-top: 20px;
-		margin-left: 10px;
-		padding: 0;
-		width: 243px;
-		height: 23px;
-		background: url("../images/logo.png");
-		text-indent: -9999px;
+		padding: 10px 0 10px 40px;
+		font-size: 26px;
+		text-align: left;
+		font-weight: 300;
+		font-family: 'Raleway', sans-serif;
+		color:#cdcdcd;
 	}
 }
 
 
 .imageGrid{
-	padding: 40px 40px 100px 40px;
+	padding: 40px 40px 40px 40px;
 
 	.cell{
 		float: left;
+		position: relative;
+
+		$color:#818181;
+		a.imgBorder{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			right: 0px;
+			bottom: 0px;
+			z-index: 1000;
+			color: $color;
+			@include transition(border 0.2s ease-out);
+		}
+		a.imgBorder:hover{
+			color: $color;
+			border: 14px solid $color;
+			@include transition(border 0.2s ease-in);
+		}
 		img{
 			width: 100%;
 			float: left;
@@ -64,4 +88,19 @@ a.fadeInUp:hover {
 	.verticalSpacer{
 		float: left;
 	}
+
+	.pageBtn{
+		font-size: 16px;
+	}
+}
+
+.pageButtonHolder{
+	padding: 0 40px 40px 40px;
+}
+
+.pageBtn{
+	padding: 15px 40px;
+	color: #ffffff;
+	background: #4f4f4f;
+	text-transform: uppercase;
 }
