@@ -8,9 +8,11 @@ html {
 
 body {
 	background: #292929;
-	color: #ffffff;
 	text-align: center;
 	padding-bottom: 60px;
+	font-weight: 300;
+	font-family: 'Raleway', sans-serif;
+	color: #cdcdcd;
 }
 
 img.gears {
@@ -37,9 +39,6 @@ a.fadeInUp:hover {
 	padding: 10px 0 10px 40px;
 	font-size: 26px;
 	text-align: left;
-	font-weight: 300;
-	font-family: 'Raleway', sans-serif;
-	color: #cdcdcd;
 }
 
 .imageGrid {
@@ -59,16 +58,20 @@ a.fadeInUp:hover {
 	bottom: 0px;
 	z-index: 1000;
 	color: #818181;
-	-webkit-transition: border 0.2s ease-out;
 	-o-transition: border 0.2s ease-out;
+	-ms-transition: border 0.2s ease-out;
+	-moz-transition: border 0.2s ease-out;
+	-webkit-transition: border 0.2s ease-out;
 	transition: border 0.2s ease-out;
 }
 
 .imageGrid .cell a.imgBorder:hover {
 	color: #818181;
 	border: 14px solid #818181;
-	-webkit-transition: border 0.2s ease-in;
 	-o-transition: border 0.2s ease-in;
+	-ms-transition: border 0.2s ease-in;
+	-moz-transition: border 0.2s ease-in;
+	-webkit-transition: border 0.2s ease-in;
 	transition: border 0.2s ease-in;
 }
 

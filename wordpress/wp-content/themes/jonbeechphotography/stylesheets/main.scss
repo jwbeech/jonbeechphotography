@@ -17,9 +17,12 @@ html { box-sizing: border-box; }
 
 body {
 	background: #292929;
-	color: #ffffff;
 	text-align: center;
 	padding-bottom: 60px;
+
+	font-weight: 300;
+	font-family: 'Raleway', sans-serif;
+	color:#cdcdcd;
 }
 
 img.gears{
@@ -47,9 +50,6 @@ a.fadeInUp:hover {
 		padding: 10px 0 10px 40px;
 		font-size: 26px;
 		text-align: left;
-		font-weight: 300;
-		font-family: 'Raleway', sans-serif;
-		color:#cdcdcd;
 	}
 }
 

@@ -1,0 +1,55 @@
+// Bootstrap Overrides
+@import "customBootstrapVariables";
+
+// Bootstrap imports
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables";
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_mixins";
+
+// Project specific
+@import "applicationVariables";
+@import "mixins/_mixins";
+
+.viewer{
+	$edge: 10px;
+	$sidebar: 400px;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 1000;
+
+	.imageHolder{
+		position: absolute;
+		top: $edge;
+		right: $sidebar;
+		bottom: $edge;
+		left: $edge;
+
+
+		background-color: #1e1e1e;
+		img{
+			max-width: 100%;
+			max-height: 100%;
+		}
+	}
+	.infoHolder{
+		background-color: #1e1e1e;
+		border-left: 1px solid #494949;
+		position: absolute;
+		width: $sidebar - $edge;
+		top: $edge;
+		right: $edge;
+		bottom: $edge;
+		text-align: left;
+		padding: 0 10px 0 20px;
+
+		h1{
+
+		}
+		p{
+
+		}
+	}
+}

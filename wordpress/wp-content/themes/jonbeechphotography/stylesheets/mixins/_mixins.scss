@@ -1,1 +1,16 @@
 @import "centering";
+
+@mixin background-size($backgroundSize) {
+	-webkit-background-size: $backgroundSize;
+	-moz-background-size: $backgroundSize;
+	-o-background-size: $backgroundSize;
+	background-size: $backgroundSize;
+}
+
+@mixin transition($transitionProperties) {
+	-o-transition: $transitionProperties;
+	-ms-transition: $transitionProperties;
+	-moz-transition: $transitionProperties;
+	-webkit-transition: $transitionProperties;
+	transition: $transitionProperties;
+}
