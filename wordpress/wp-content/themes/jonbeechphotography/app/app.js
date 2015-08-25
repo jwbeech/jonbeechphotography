@@ -1,6 +1,6 @@
 angular.module(
 	"jonphoto",
 	[
-		"ui.router"
+		"ui.router", "utils"
 	]
 );

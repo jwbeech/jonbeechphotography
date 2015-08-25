@@ -26,12 +26,35 @@
 		right: $sidebar;
 		bottom: $edge;
 		left: $edge;
-
-
 		background-color: #1e1e1e;
+
+
 		img{
 			max-width: 100%;
 			max-height: 100%;
+		}
+
+		a{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			min-width: 10%;
+			display: block;
+			background-position: center center;
+			background-repeat: no-repeat;
+			@include opacity(0.5);
+			text-indent: -99999px;
+		}
+		a:hover{
+			@include opacity(1);
+		}
+		a.prevBtn{
+			left: 0;
+			background-image: url("../images/leftArrow.svg");
+		}
+		a.nextBtn{
+			right: 0;
+			background-image: url("../images/rightArrow.svg");
 		}
 	}
 	.infoHolder{
@@ -53,3 +76,4 @@
 		}
 	}
 }
+

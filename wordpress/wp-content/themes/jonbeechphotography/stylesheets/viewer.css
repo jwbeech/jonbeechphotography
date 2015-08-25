@@ -21,6 +21,34 @@
 	max-height: 100%;
 }
 
+.viewer .imageHolder a {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	min-width: 10%;
+	display: block;
+	background-position: center center;
+	background-repeat: no-repeat;
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+	text-indent: -99999px;
+}
+
+.viewer .imageHolder a:hover {
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+
+.viewer .imageHolder a.prevBtn {
+	left: 0;
+	background-image: url("../images/leftArrow.svg");
+}
+
+.viewer .imageHolder a.nextBtn {
+	right: 0;
+	background-image: url("../images/rightArrow.svg");
+}
+
 .viewer .infoHolder {
 	background-color: #1e1e1e;
 	border-left: 1px solid #494949;

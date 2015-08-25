@@ -13,12 +13,14 @@
 
 			"/wp-content/themes/jonbeechphotography/app/app.js",
 			"/wp-content/themes/jonbeechphotography/app/config/routes.js",
+			"/wp-content/themes/jonbeechphotography/app/shared/utils.js",
 
 			"/wp-content/themes/jonbeechphotography/app/sections/gallery/gallery-controller.js",
 			"/wp-content/themes/jonbeechphotography/app/sections/gallery/gallery-service.js",
 			"/wp-content/themes/jonbeechphotography/app/sections/gallery/image-grid/image-grid-directive.js",
 
-			"/wp-content/themes/jonbeechphotography/app/sections/viewer/viewer-directive.js"
+			"/wp-content/themes/jonbeechphotography/app/sections/viewer/viewer-directive.js",
+			"/wp-content/themes/jonbeechphotography/app/sections/viewer/equal-padding-directive.js"
 		]
 	},
 	"production": {
