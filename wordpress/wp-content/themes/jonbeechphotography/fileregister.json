@@ -19,7 +19,7 @@
 			"/wp-content/themes/jonbeechphotography/app/sections/gallery/gallery-service.js",
 			"/wp-content/themes/jonbeechphotography/app/sections/gallery/image-grid/image-grid-directive.js",
 
-			"/wp-content/themes/jonbeechphotography/app/sections/viewer/viewer-directive.js",
+			"/wp-content/themes/jonbeechphotography/app/sections/viewer/viewer-controller.js",
 			"/wp-content/themes/jonbeechphotography/app/sections/viewer/equal-padding-directive.js"
 		]
 	},

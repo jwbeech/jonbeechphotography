@@ -15,14 +15,8 @@ angular.module("jonphoto").controller("GalleryController", ["GalleryService", "$
 
 		GalleryService.fetchPageImages(pageNumber)
 			.then(function(response){
-				console.log("response: ", response);
-				self.imageData = response.data;
-			})
-			.then(function(){
-				return GalleryService.checkHasNextPage(pageNumber)
-			})
-			.then(function(){
-				self.hasNewPage = true;
+				self.imageData	= response.data.data.api_rows;
+				self.hasNewPage	= response.data.data.api_page < response.data.data.api_total_pages;
 				self.loading	= false;
 			},
 			function(){

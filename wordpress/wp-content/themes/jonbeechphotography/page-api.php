@@ -52,10 +52,13 @@ if (isset($_GET['call'])){
 							//$related->main = $meta_entry->meta_value;
 							break;
 						case '_wp_attachment_metadata':
-							$related->meta = unserialize($meta_entry->meta_value);
-							$related->meta['file'] = $prefix . $related->meta['file'];
-							$related->meta['sizes']['thumbnail']['file'] = $prefix . $related->meta['sizes']['thumbnail']['file'];
-							$related->meta['sizes']['medium']['file'] = $prefix . $related->meta['sizes']['medium']['file'];
+							$related->meta 			= unserialize($meta_entry->meta_value);
+							$related->meta['file']	= $prefix . $related->meta['file'];
+							$originalInfo			= pathinfo($related->meta['file']);
+							$thumbPrefix			= $originalInfo['dirname'] . '/';
+
+							$related->meta['sizes']['thumbnail']['file'] = $thumbPrefix . $related->meta['sizes']['thumbnail']['file'];
+							$related->meta['sizes']['medium']['file'] = $thumbPrefix . $related->meta['sizes']['medium']['file'];
 							break;
 					}
 				}
@@ -68,10 +71,13 @@ if (isset($_GET['call'])){
 				'api_rows'				=> $newImages
 			);
 			break;
+		default:
+			$result->message = 'Call parameter "' . $_GET['call'] . '" not supported. ';
+			break;
 	}
 }
 else{
-	$result->message = "POST: 'call' parameter not set";
+	$result->message = "GET: 'call' parameter not set";
 }
 
 function hasget($name){

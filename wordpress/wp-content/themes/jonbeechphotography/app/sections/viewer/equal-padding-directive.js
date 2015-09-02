@@ -34,7 +34,7 @@ angular.module("jonphoto").directive("equalPadding", ["$window", "utils", functi
 
 			$scope.resizeListener();
 
-			$scope.on("$destroy", function(){
+			$scope.$on("$destroy", function(){
 				angular.element($window).off("resize", $scope.resizeListener);
 			});
 		}

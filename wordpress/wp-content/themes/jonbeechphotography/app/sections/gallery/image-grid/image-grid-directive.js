@@ -1,4 +1,4 @@
-angular.module("jonphoto").directive("imageGrid", [function(){
+angular.module("jonphoto").directive("imageGrid", ["$location", function($location){
 	return {
 		templateUrl: "/wp-content/themes/jonbeechphotography/app/sections/gallery/image-grid/image-grid.html",
 		restrict: "AE",
@@ -22,6 +22,13 @@ angular.module("jonphoto").directive("imageGrid", [function(){
 				$scope.templateRows	= rows;
 			});
 
+			$scope.loadImage = function(id){
+				var currentHash = $location.path();
+				var newPath		= currentHash + "/view/" + id;
+				console.log("Setting new path to: ", newPath);
+				$location.path(newPath);
+			};
+
 			function processRow(fullSet){
 				var images		= [];
 				var i			= 3;
@@ -35,15 +42,15 @@ angular.module("jonphoto").directive("imageGrid", [function(){
 				// find min height
 				var minHeight	= 999999999999999;
 				angular.forEach(images, function(image, i) {
-					minHeight	= Math.min(minHeight, image.attachment_meta.width);
+					minHeight	= Math.min(minHeight, image.meta.width);
 				});
 
 				// Convert all sizes to the same height, get full width
 				var fullWidth	= 0;
 				angular.forEach(images, function(image, i) {
-					var ratio		= minHeight / image.attachment_meta.height;
-					image.height	= image.attachment_meta.height * ratio;
-					image.width		= image.attachment_meta.width * ratio;
+					var ratio		= minHeight / image.meta.height;
+					image.height	= image.meta.height * ratio;
+					image.width		= image.meta.width * ratio;
 					fullWidth		+= image.width;
 				});
 
