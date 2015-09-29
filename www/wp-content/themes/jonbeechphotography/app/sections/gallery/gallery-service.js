@@ -5,7 +5,7 @@ angular.module("jonphoto").factory("GalleryService", ["$http", "$q", function($h
 
 	return {
 		fetchPageImages : function(pageNumber){
-			return $http.get("/api/?call=api_images&api_total_per_page=" + pageSize + "&api_page=" + pageNumber);
+			return $http.get("/gallery-api/?call=api_images&api_total_per_page=" + pageSize + "&api_page=" + pageNumber);
 		},
 
 		cachedRecentPage : function(){

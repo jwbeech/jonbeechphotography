@@ -1,0 +1,16 @@
+To install on a new server:
+-------------------------------------------
+1)  Dump the database locally
+2)  Copy all wwww/ files to the new server root
+3)  Copy all dumps and updates onto the server
+4)  Copy the related config/ file and override on the new server
+5)  Reset the database on the new server with the dump and run update script for specific server
+
+
+5) Local tester deploy (mac)
+-------------------------------------------
+Dump DB on mac:
+mysqldump --host=localhost -uroot -proot portfiliowordpress > /Users/jon/GITWork/jonbeechphotography/db/portfolio_dump.sql
+
+Restore DB on mac
+mysql --host=localhost -uroot -proot makebetter_site_test < /Users/jon/GITWork/jonbeechphotography/db/portfolio_dump.sql

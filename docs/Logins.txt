@@ -1,0 +1,3 @@
+Logins for the wordpress install
+--------------------------------
+admin:123qwe
