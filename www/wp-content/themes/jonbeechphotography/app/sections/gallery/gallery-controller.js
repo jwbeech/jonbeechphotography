@@ -1,4 +1,4 @@
-angular.module("jonphoto").controller("GalleryController", ["GalleryService", "$stateParams", "$location", function(GalleryService, $stateParams, $location){
+angular.module("jonphoto").controller("GalleryController", ["ImageService", "$stateParams", "$location", function(ImageService, $stateParams, $location){
 	var self		= this;
 	self.imageData	= null;
 	self.pageNumber	= 1;
@@ -13,7 +13,7 @@ angular.module("jonphoto").controller("GalleryController", ["GalleryService", "$
 
 		$location.path("/gallery/" + pageNumber);
 
-		GalleryService.fetchPageImages(pageNumber)
+		ImageService.fetchPageImages(pageNumber)
 			.then(function(response){
 				self.imageData	= response.data.data.api_rows;
 				self.hasNewPage	= response.data.data.api_page < response.data.data.api_total_pages;
