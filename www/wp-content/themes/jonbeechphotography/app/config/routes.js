@@ -4,12 +4,10 @@ angular.module("jonphoto").config(["$stateProvider", "$urlRouterProvider", funct
 
 	$stateProvider.state("gallery", {
 		url				: "/gallery/:pageNumber",
-		templateUrl		: "/wp-content/themes/jonbeechphotography/app/sections/gallery/gallery.html",
-		controller		: "GalleryController as ctrl"
+		templateUrl		: "/wp-content/themes/jonbeechphotography/app/sections/gallery/gallery.html"
 	});
-	$stateProvider.state("gallery.view", {
-		url				: "/view/:imageid",
-		templateUrl		: "/wp-content/themes/jonbeechphotography/app/sections/viewer/viewer.html",
-		controller		: "ViewerController as ctrl"
+	$stateProvider.state("view", {
+		url				: "/viewer/:category/:imageid",
+		templateUrl		: "/wp-content/themes/jonbeechphotography/app/sections/viewer/viewer.html"
 	});
 }]);

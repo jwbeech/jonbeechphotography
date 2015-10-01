@@ -23,8 +23,7 @@ angular.module("jonphoto").directive("imageGrid", ["$location", function($locati
 			});
 
 			$scope.loadImage = function(id){
-				var currentHash = $location.path();
-				var newPath		= currentHash + "/view/" + id;
+				var newPath		= "/viewer/all/" + id;
 				console.log("Setting new path to: ", newPath);
 				$location.path(newPath);
 			};
