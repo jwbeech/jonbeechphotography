@@ -19,6 +19,7 @@
 .viewer .imageHolder img {
 	max-width: 100%;
 	max-height: 100%;
+	border: none;
 }
 
 .viewer .imageHolder a {
@@ -29,8 +30,8 @@
 	display: block;
 	background-position: center center;
 	background-repeat: no-repeat;
-	opacity: 0.5;
-	filter: alpha(opacity=50);
+	opacity: 0.1;
+	filter: alpha(opacity=10);
 	text-indent: -99999px;
 }
 
@@ -59,4 +60,11 @@
 	bottom: 10px;
 	text-align: left;
 	padding: 0 10px 0 20px;
+}
+
+.viewer a.close {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	color: #fff;
 }

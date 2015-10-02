@@ -3,7 +3,7 @@
 
 	<div class="clearfix" ng-repeat="row in templateRows" ng-style="{'margin-top':gapPercent + '%'}">
 		<div class="cell clearfix" ng-repeat="cell in row" ng-style="{width:cell.widthPercent + '%'}" ng-class="{divider:cell.type == 'divider'}">
-			<img ng-if="cell.type != 'divider'" ng-src="{{cell.meta.sizes.medium.file}}">
+			<img ng-if="cell.type != 'divider'" ng-src="{{cell.meta.sizes.medium.file}}" alt=" ">
 			<a ng-click="loadImage(cell.id)" ng-if="cell.type != 'divider'" class="imgBorder"></a>
 		</div>
 	</div>

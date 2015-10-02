@@ -1,9 +1,9 @@
 angular.module("jonphoto").config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
 
-	$urlRouterProvider.otherwise("/gallery/1");
+	$urlRouterProvider.otherwise("/gallery/all/1");
 
 	$stateProvider.state("gallery", {
-		url				: "/gallery/:pageNumber",
+		url				: "/gallery/:category/:pageNumber",
 		templateUrl		: "/wp-content/themes/jonbeechphotography/app/sections/gallery/gallery.html"
 	});
 	$stateProvider.state("view", {

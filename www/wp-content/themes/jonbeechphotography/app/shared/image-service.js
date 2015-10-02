@@ -117,16 +117,24 @@ angular.module("jonphoto").factory("ImageService", ["$http", "$window", "$q", "C
 									}
 									// If outside the set
 									else{
-										// Calculate the new index and page
-										// The increment image will always be in the new set as the increment
-										// is restricted to less than the page size at the top
-										imageIndex		= (imageIndex < 0) ? pageSize + imageIndex : imageIndex - pageSize;
-										currPageNumber	= (imageIndex < 0) ? prevPageNumber : nextPageNumber;
+										currPageNumber	= (increment < 0) ? prevPageNumber : nextPageNumber;
 
 										// Fetch the next or previous set and return the index
 										self.fetchPageImages(category, currPageNumber)
 											.then(function(response){
-												resolve(response.data.api_rows[imageIndex]);
+												var responsePageSize = response.data.api_rows.length;
+												var newIndex;
+
+												// Positive / Forward
+												if (imageIndex >= rows.length){
+													newIndex = imageIndex - rows.length;
+												}
+												// Negative / Backward
+												else{
+													newIndex = responsePageSize + imageIndex;
+												}
+
+												resolve(response.data.api_rows[newIndex]);
 											});
 									}
 								}

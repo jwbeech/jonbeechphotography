@@ -1,9 +1,8 @@
 <div class="viewer" ng-controller="ViewerController as ctrl">
 	<div class="imageHolder" equal-padding="">
-		<img src="/wp-content/uploads/2015/08/IMG_0486.jpg">
-		<!--<img src="/wp-content/uploads/2015/08/IMG_0920.jpg">-->
-		<a href="#" class="prevBtn">Previous Image</a>
-		<a href="#" class="nextBtn">Next Image</a>
+		<img ng-src="{{ctrl.imageURL}}" ng-show="ctrl.imageURL" alt=" ">
+		<a href="" ng-click="ctrl.prevImage()" class="prevBtn">Previous Image</a>
+		<a href="" ng-click="ctrl.nextImage()" class="nextBtn">Next Image</a>
 	</div>
 	<div class="infoHolder">
 		<h1>Image Title</h1>
@@ -11,4 +10,6 @@
 			Something was great about this image :)
 		</p>
 	</div>
+
+	<a href="" class="close" ng-click="ctrl.close()">Close</a>
 </div>
