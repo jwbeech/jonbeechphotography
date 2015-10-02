@@ -22,7 +22,7 @@ angular.module("jonphoto").factory("ImageService", ["$http", "$window", "$q", "C
 					resolve(currentPage);
 				}
 				else{
-					self.call("api_page_number", {api_total_per_page:pageSize, api_image_id:imageId})
+					self.call("api_page_number", {api_category:category, api_total_per_page:pageSize, api_image_id:imageId})
 						.then(function(response){
 							self.setPage(response.data.data.api_page);
 							resolve(currentPage);
@@ -48,7 +48,7 @@ angular.module("jonphoto").factory("ImageService", ["$http", "$window", "$q", "C
 					resolve(pageCache.getValue(pageNumber));
 				}
 				else{
-					self.call("api_images", {api_total_per_page:pageSize, api_page:pageNumber})
+					self.call("api_images", {api_category:category, api_total_per_page:pageSize, api_page:pageNumber})
 						.then(function(response){
 							pageCache.setValue(pageNumber, response.data);
 							resolve(response.data);

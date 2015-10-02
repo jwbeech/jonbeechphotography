@@ -16,7 +16,8 @@ class ImageFetcher {
 		global $wpdb;
 		$page			= $this->hasget('api_page') ? $_GET['api_page'] : 1;
 		$total_per_page	= $this->hasget('api_total_per_page') ? $_GET['api_total_per_page'] : 20;
-		$term_id		= $this->hasget('api_term_id') ? $_GET['api_term_id'] : null;
+		$category		= $this->hasget('api_category') ? $_GET['api_category'] : null;
+		if ($category == 'all') $category = null;
 
 		$limit			= $total_per_page;
 		$offset			= $total_per_page * ($page - 1);
@@ -32,11 +33,11 @@ class ImageFetcher {
 		";
 
 		// Add the category where attrs if needed
-		if ($term_id) {
+		if ($category) {
 			$mainQuery	.= "
-					AND $wpdb->term_taxonomy.taxonomy = 'media_category'
-					AND $wpdb->terms.term_id IN ($term_id)
-				";
+				AND $wpdb->term_taxonomy.taxonomy = 'media_category'
+				AND $wpdb->terms.slug IN ('$category')
+			";
 		}
 
 		// Add the limit and offset for the data fetch
@@ -108,8 +109,10 @@ class ImageFetcher {
 	function route_getPageNumber() {
 		global $wpdb;
 		$total_per_page	= $this->hasget('api_total_per_page') ? $_GET['api_total_per_page'] : 20;
-		$term_id		= $this->hasget('api_term_id') ? $_GET['api_term_id'] : null;
 		$api_id			= $this->hasget('api_image_id') ? $_GET['api_image_id'] : null;
+		$category		= $this->hasget('api_category') ? $_GET['api_category'] : null;
+		if ($category == 'all') $category = null;
+
 		if (is_null($api_id)){
 			$this->result->message = 'Missing required parameter: "api_image_id"';
 		}
@@ -125,10 +128,10 @@ class ImageFetcher {
 			";
 
 			// Add the category where attrs if needed
-			if ($term_id) {
+			if ($category) {
 				$mainQuery	.= "
 					AND $wpdb->term_taxonomy.taxonomy = 'media_category'
-					AND $wpdb->terms.term_id IN ($term_id)
+					AND $wpdb->terms.slug IN ($category)
 				";
 			}
 

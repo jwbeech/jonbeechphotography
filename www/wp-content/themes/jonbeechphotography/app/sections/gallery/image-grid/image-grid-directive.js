@@ -1,4 +1,4 @@
-angular.module("jonphoto").directive("imageGrid", ["$location", function($location){
+angular.module("jonphoto").directive("imageGrid", ["$location", "$stateParams", function($location, $stateParams){
 	return {
 		templateUrl: "/wp-content/themes/jonbeechphotography/app/sections/gallery/image-grid/image-grid.html",
 		restrict: "AE",
@@ -23,7 +23,7 @@ angular.module("jonphoto").directive("imageGrid", ["$location", function($locati
 			});
 
 			$scope.loadImage = function(id){
-				var newPath		= "/viewer/all/" + id;
+				var newPath		= "/viewer/" + $stateParams.category + "/" + id;
 				console.log("Setting new path to: ", newPath);
 				$location.path(newPath);
 			};
