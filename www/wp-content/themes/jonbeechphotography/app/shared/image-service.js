@@ -1,7 +1,5 @@
 angular.module("jonphoto").factory("ImageService", ["$http", "$window", "$q", "Cache", function($http, $window, $q, Cache){
 
-	console.log("Service created");
-
 	var pageSize 		= 30;
 	var currentCategory	= null;
 	var currentPage		= null;
@@ -9,7 +7,7 @@ angular.module("jonphoto").factory("ImageService", ["$http", "$window", "$q", "C
 
 	var self			= {
 		setPage: function(pageNumber){
-			currentPage = pageNumber;
+			currentPage = pageNumber * 1;
 			if ($window.localStorage){
 				$window.localStorage["currentPage"] = currentPage;
 			}
@@ -20,7 +18,7 @@ angular.module("jonphoto").factory("ImageService", ["$http", "$window", "$q", "C
 					resolve(currentPage);
 				}
 				else if ($window.localStorage && $window.localStorage["currentPage"]){
-					currentPage = $window.localStorage["currentPage"];
+					currentPage = $window.localStorage["currentPage"] * 1;
 					resolve(currentPage);
 				}
 				else{

@@ -76,7 +76,7 @@ module.exports = function(grunt) {
 					logLevel	: "INFO",
 					autoWatch	: true,
 					browsers	: ["PhantomJS"],
-					singleRun	: true
+					singleRun	: false
 				}
 			}
 		}
