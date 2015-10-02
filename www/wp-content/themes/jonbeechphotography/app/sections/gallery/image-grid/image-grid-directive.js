@@ -84,7 +84,7 @@ angular.module("jonphoto").directive("imageGrid", ["$location", function($locati
 				angular.forEach(newImages, function(image, i) {
 					total += image.widthPercent;
 				});
-				console.log(total);
+				//console.log(total);
 
 				return newImages;
 			}

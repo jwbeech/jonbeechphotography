@@ -10,13 +10,16 @@
 
 			"/wp-content/themes/jonbeechphotography/bower_components/angular/angular.js",
 			"/wp-content/themes/jonbeechphotography/bower_components/angular-ui-router/release/angular-ui-router.js",
+			"/wp-content/themes/jonbeechphotography/bower_components/rootclass/dist/rootclass-angular.js",
 
 			"/wp-content/themes/jonbeechphotography/app/app.js",
 			"/wp-content/themes/jonbeechphotography/app/config/routes.js",
 			"/wp-content/themes/jonbeechphotography/app/shared/utils.js",
 
+			"/wp-content/themes/jonbeechphotography/app/sections/image-service.js",
+			"/wp-content/themes/jonbeechphotography/app/sections/cache.js",
+
 			"/wp-content/themes/jonbeechphotography/app/sections/gallery/gallery-controller.js",
-			"/wp-content/themes/jonbeechphotography/app/sections/gallery/gallery-service.js",
 			"/wp-content/themes/jonbeechphotography/app/sections/gallery/image-grid/image-grid-directive.js",
 
 			"/wp-content/themes/jonbeechphotography/app/sections/viewer/viewer-controller.js",
@@ -24,7 +27,7 @@
 		]
 	},
 	"production": {
-		"css"	: ["/wp-content/themes/jonbeechphotography/stylesheets/application.css"],
-		"js"	: ["/wp-content/themes/jonbeechphotography/app/application.js"]
+		"css"	: ["/wp-content/themes/jonbeechphotography/stylesheets/application.min.css"],
+		"js"	: ["/wp-content/themes/jonbeechphotography/app/application.min.js"]
 	}
 }

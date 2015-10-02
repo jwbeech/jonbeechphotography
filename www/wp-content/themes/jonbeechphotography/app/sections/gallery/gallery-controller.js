@@ -12,17 +12,6 @@ angular.module("jonphoto").controller("GalleryController", ["ImageService", "$st
 		self.imageData	= [];
 
 		$location.path("/gallery/" + pageNumber);
-
-		ImageService.fetchPageImages(pageNumber)
-			.then(function(response){
-				self.imageData	= response.data.data.api_rows;
-				self.hasNewPage	= response.data.data.api_page < response.data.data.api_total_pages;
-				self.loading	= false;
-			},
-			function(){
-				self.hasNewPage = false;
-				self.loading	= false;
-			});
 	};
 	self.fetchNextPage = function(){
 		self.fetchPage(Number(self.pageNumber) + 1);
@@ -35,5 +24,14 @@ angular.module("jonphoto").controller("GalleryController", ["ImageService", "$st
 		self.pageNumber = $stateParams.pageNumber
 	}
 
-	self.fetchPage(self.pageNumber);
+	ImageService.fetchPageImageAndSetPage("all", self.pageNumber)
+		.then(function(response){
+			self.imageData	= response.data.api_rows;
+			self.hasNewPage	= response.data.api_page < response.data.api_total_pages;
+			self.loading	= false;
+		},
+		function(){
+			self.hasNewPage = false;
+			self.loading	= false;
+		});
 }]);
