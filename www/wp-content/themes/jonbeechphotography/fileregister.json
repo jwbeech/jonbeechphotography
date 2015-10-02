@@ -18,6 +18,7 @@
 			"/wp-content/themes/jonbeechphotography/app/shared/utils.js",
 			"/wp-content/themes/jonbeechphotography/app/shared/image-service.js",
 			"/wp-content/themes/jonbeechphotography/app/shared/cache.js",
+			"/wp-content/themes/jonbeechphotography/app/shared/key-service.js",
 
 			"/wp-content/themes/jonbeechphotography/app/sections/gallery/gallery-controller.js",
 			"/wp-content/themes/jonbeechphotography/app/sections/gallery/image-grid/image-grid-directive.js",
