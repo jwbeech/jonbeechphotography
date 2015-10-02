@@ -53,7 +53,7 @@ module.exports = function(grunt) {
 		cssmin : {
 			main: {
 				files: [{
-					src: fileRegister.development.css[0],
+					src: fileRegister.development.css,
 					dest: fileRegister.production.css[0]
 				}]
 			}
