@@ -6,7 +6,7 @@ $json		= json_decode(file_get_contents(dirname(__FILE__) . "/fileregister.json")
 $fileData	= $env == "development" ? $json["development"] : $json["production"];
 
 $fonts		= "http://fonts.googleapis.com/css?family=";
-$fonts		.= "Raleway:400,100,200,300,500,600,700,900,800";
+$fonts		.= "Raleway:100,200,300,400,500,600,700,900,800";
 
 $fileData["css"][]	= $fonts;
 ?>
@@ -21,14 +21,15 @@ $fileData["css"][]	= $fonts;
 </head>
 
 <body>
-	<div ui-view>
-		<img src="/wp-content/themes/jonbeechphotography/images/gears.svg" class="gears" />
+
+	<div id="header">
+		<div class="sizingWrapper">
+			<h1 id="logo">jonbeechphotography</h1>
+		</div>
 	</div>
 
-	<div id="footer">
-		<div class="sizingWrapper">
-			<h1 id="logo">jon beech photography</h1>
-		</div>
+	<div ui-view>
+		<img src="/wp-content/themes/jonbeechphotography/images/gears.svg" class="gears" />
 	</div>
 
 

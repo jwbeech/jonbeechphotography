@@ -7,7 +7,7 @@ html {
 }
 
 body {
-	background: #292929;
+	background: #000;
 	text-align: center;
 	padding-bottom: 60px;
 	font-weight: 300;
@@ -27,22 +27,30 @@ a.fadeInUp:hover {
 	animation-name: fadeInUp;
 }
 
-#footer {
+#header {
 	position: fixed;
 	width: 100%;
-	bottom: 0;
+	top: 0;
 	left: 0;
+	z-index: 100;
+	border-left: 5px solid #999999;
 	background: rgba(0, 0, 0, 0.8);
 }
 
-#footer #logo {
-	padding: 10px 0 10px 40px;
-	font-size: 26px;
+#header #logo {
+	margin: 0;
+	padding: 8px 0 10px 20px;
+	font-size: 20px;
 	text-align: left;
+	color: #fff;
+	opacity: 0.8;
+	font-weight: 100;
 }
 
 .imageGrid {
-	padding: 40px 40px 40px 40px;
+	padding: 42px 5px 0 5px;
+	position: relative;
+	z-index: 50;
 }
 
 .imageGrid .cell {
