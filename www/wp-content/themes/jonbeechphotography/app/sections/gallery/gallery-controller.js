@@ -1,9 +1,8 @@
 angular.module("jonphoto").controller("GalleryController", ["ImageService", "$stateParams", "$location", function(ImageService, $stateParams, $location){
 	var self		= this;
-	self.imageData	= null;
+	self.imageData	= [];
 	self.pageNumber	= 1;
 	self.loading	= true;
-	self.hasNewPage	= false;
 	var category	= $stateParams.category;
 
 	self.fetchPage = function(pageNumber){
@@ -15,10 +14,14 @@ angular.module("jonphoto").controller("GalleryController", ["ImageService", "$st
 		$location.path("/gallery/" + category + "/" + pageNumber);
 	};
 	self.fetchNextPage = function(){
-		self.fetchPage(Number(self.pageNumber) + 1);
+		if (self.showNext){
+			self.fetchPage(Number(self.pageNumber) + 1);
+		}
 	};
 	self.fetchPreviousPage = function(){
-		self.fetchPage(Number(self.pageNumber) - 1);
+		if (self.showPrev){
+			self.fetchPage(Number(self.pageNumber) - 1);
+		}
 	};
 
 	if ($stateParams.pageNumber){
@@ -26,7 +29,8 @@ angular.module("jonphoto").controller("GalleryController", ["ImageService", "$st
 		ImageService.fetchPageImageAndSetPage(category, self.pageNumber)
 			.then(function(response){
 				self.imageData	= response.data.api_rows;
-				self.hasNewPage	= response.data.api_page < response.data.api_total_pages;
+				self.showPrev	= response.data.api_page > 1;
+				self.showNext	= response.data.api_page < response.data.api_total_pages;
 				self.loading	= false;
 			},
 			function(){

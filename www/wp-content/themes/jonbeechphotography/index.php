@@ -22,12 +22,6 @@ $fileData["css"][]	= $fonts;
 
 <body>
 
-	<div id="header">
-		<div class="sizingWrapper">
-			<h1 id="logo">jonbeechphotography</h1>
-		</div>
-	</div>
-
 	<div ui-view>
 		<img src="/wp-content/themes/jonbeechphotography/images/gears.svg" class="gears" />
 	</div>

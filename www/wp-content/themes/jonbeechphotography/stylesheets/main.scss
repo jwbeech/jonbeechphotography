@@ -12,13 +12,16 @@
 
 
 // Default to box sizing
-html { box-sizing: border-box; }
-*, *:before, *:after { box-sizing: inherit; }
+html {
+	box-sizing: border-box;
+}
+*, *:before, *:after {
+	box-sizing: inherit;
+}
 
 body {
-	background: #000;
+	background: #fff;
 	text-align: center;
-	padding-bottom: 60px;
 
 	font-weight: 300;
 	font-family: 'Raleway', sans-serif;
@@ -39,56 +42,69 @@ a.fadeInUp:hover {
 
 
 #header{
-	position: fixed;
 	width: 100%;
-	top: 0;
-	left: 0;
-	z-index: 100;
-	border-left: 5px solid #999999;
+	height: $headerHeight;
 
-	background: rgba(0, 0, 0, 0.8);
-	//background: #fff;
+	background: url("../images/header-shadow.gif") 0 0 repeat-x;
 
 	#logo{
-		margin: 0;
-		padding: 8px 0 10px 20px;
-		font-size: 20px;
+		$paddingV:12px;
+		margin: $paddingV 0 0 20px;
+		padding: 0 14px;
+		font-size: 18px;
+		font-weight: 300;
+		letter-spacing: 2px;
 		text-align: left;
 		color: #fff;
-		opacity: 0.8;
-		font-weight: 100;
+		border-left: 2px solid #fff;
 	}
 }
 
 
 .imageGrid{
-	padding: 42px 5px 0 5px;
-	position: relative;
-	z-index: 50;
+	padding: 0 $imageGap $imageGap $imageGap;
 
 	.cell{
 		float: left;
-		position: relative;
 
 		$color:#818181;
 		a.imgBorder{
-			position: absolute;
-			top: 0px;
-			left: 0px;
-			right: 0px;
-			bottom: 0px;
-			z-index: 1000;
-			color: $color;
-			@include transition(border 0.2s ease-out);
-		}
-		a.imgBorder:hover{
-			color: $color;
-			border: 14px solid $color;
-			@include transition(border 0.2s ease-in);
-		}
-		img{
 			width: 100%;
+			height: 100%;
 			float: left;
+			border-radius: 5px;
+			overflow: hidden;
+			position: relative;
+
+			img{
+				width: 100%;
+				float: left;
+			}
+
+			.info{
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				z-index: 50;
+
+				background: rgba(0, 0, 0, 0.5);
+
+				@include translate3d(0, 50px, 0);
+				@include transition(all 0.1s ease-in);
+
+				.content{
+					color: #fff;
+					border-left: 1px solid #fff;
+					padding-left: 10px;
+					margin: 15px 15px;
+					text-align: left;
+				}
+			}
+
+			&:hover .info{
+				@include translate3d(0, 0, 0);
+			}
 		}
 	}
 	.cell.divider{
@@ -103,13 +119,48 @@ a.fadeInUp:hover {
 	}
 }
 
-.pageButtonHolder{
-	padding: 0 40px 40px 40px;
-}
+.footer{
+	padding: $imageGap $imageGap 150px $imageGap;
+	background: #f7f8fa;
 
-.pageBtn{
-	padding: 15px 40px;
-	color: #ffffff;
-	background: #4f4f4f;
-	text-transform: uppercase;
+	.pageButtonHolder{
+		/*display: inline-block;
+		margin: 0 auto;*/
+		.btn{
+			padding: 20px 100px;
+			color: #525558;
+			background: #e6e6e6;
+			text-transform: uppercase;
+			font-weight: 800;
+			position: relative;
+
+			span{
+				top:16px;
+				font-size: 26px;
+				position: absolute;
+				color: #93999e;
+			}
+
+			&.left{
+				float: left;
+				span{
+					left: 30px;
+					@include transition(left 0.3s ease-out);
+				}
+				&:hover span{
+					left: 20px;
+				}
+			}
+			&.right{
+				float: right;
+				span{
+					right: 30px;
+					@include transition(right 0.3s ease-out);
+				}
+				&:hover span{
+					right: 20px;
+				}
+			}
+		}
+	}
 }

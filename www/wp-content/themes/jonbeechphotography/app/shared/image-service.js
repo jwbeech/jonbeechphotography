@@ -12,7 +12,7 @@ angular.module("jonphoto").factory("ImageService", ["$http", "$window", "$q", "C
 				$window.localStorage["currentPage"] = currentPage;
 			}
 		},
-		getPage: function(imageId){
+		getPage: function(imageId, category){
 			return $q(function(resolve, reject){
 				if (currentPage != null){
 					resolve(currentPage);
@@ -73,7 +73,7 @@ angular.module("jonphoto").factory("ImageService", ["$http", "$window", "$q", "C
 				When found, if there is no increment the use the current cycle page to set the current page for the app
 				*/
 
-				self.getPage(imageId).then(cyclePages);
+				self.getPage(imageId, category).then(cyclePages);
 
 				// TODO: Add full cycle check
 

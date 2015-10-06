@@ -8,7 +8,7 @@ angular.module("jonphoto").directive("imageGrid", ["$location", "$stateParams", 
 		link: function ($scope, $element, $attrs) {
 
 			// 20 pixels between images on a width of 1920
-			var gap				= 5;
+			var gap				= 20;
 			$scope.gapRatio		= gap / 1920;
 			$scope.gapPercent	= $scope.gapRatio * 100;
 
