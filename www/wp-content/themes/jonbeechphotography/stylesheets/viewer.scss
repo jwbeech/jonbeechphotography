@@ -11,22 +11,20 @@
 
 .viewer{
 	$edge: 10px;
-	$sidebar: 400px;
 
-	position: fixed;
+	position: absolute;
 	top: 0;
 	left: 0;
 	bottom: 0;
 	right: 0;
-	z-index: 1000;
+	background: #000;
 
 	.imageHolder{
 		position: absolute;
 		top: $edge;
-		right: $sidebar;
+		right: $edge;
 		bottom: $edge;
 		left: $edge;
-		background-color: #1e1e1e;
 
 
 		img{
@@ -56,24 +54,6 @@
 		a.nextBtn{
 			right: 0;
 			background-image: url("../images/rightArrow.svg");
-		}
-	}
-	.infoHolder{
-		background-color: #1e1e1e;
-		border-left: 1px solid #494949;
-		position: absolute;
-		width: $sidebar - $edge;
-		top: $edge;
-		right: $edge;
-		bottom: $edge;
-		text-align: left;
-		padding: 0 10px 0 20px;
-
-		h1{
-
-		}
-		p{
-
 		}
 	}
 

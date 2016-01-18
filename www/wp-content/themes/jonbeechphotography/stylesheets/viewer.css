@@ -1,19 +1,18 @@
 .viewer {
-	position: fixed;
+	position: absolute;
 	top: 0;
 	left: 0;
 	bottom: 0;
 	right: 0;
-	z-index: 1000;
+	background: #000;
 }
 
 .viewer .imageHolder {
 	position: absolute;
 	top: 10px;
-	right: 400px;
+	right: 10px;
 	bottom: 10px;
 	left: 10px;
-	background-color: #1e1e1e;
 }
 
 .viewer .imageHolder img {
@@ -48,18 +47,6 @@
 .viewer .imageHolder a.nextBtn {
 	right: 0;
 	background-image: url("../images/rightArrow.svg");
-}
-
-.viewer .infoHolder {
-	background-color: #1e1e1e;
-	border-left: 1px solid #494949;
-	position: absolute;
-	width: 390px;
-	top: 10px;
-	right: 10px;
-	bottom: 10px;
-	text-align: left;
-	padding: 0 10px 0 20px;
 }
 
 .viewer a.close {

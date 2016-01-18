@@ -1,16 +1,12 @@
-Functional:
------------------------------------
-*	Add keyboard shortcut service and implementation into viewer
-*	Layout site with all pages, setup API calls for the gallery categories
-*	Update the layout algorithm to layout images better
-
-
 Styling:
 -----------------------------------
-*	Write content for about and contact
 *	Design new skin
 *	Implement skin
 *	Implement mobile versions of the skin
+
+Functional:
+-----------------------------------
+*	Update the layout algorithm to layout images better
 
 
 Deployment:
@@ -23,3 +19,5 @@ Post Deployment:
 -----------------------------------
 *	Add facebook integration for new images
 *	Share site codebase in some way
+*	Write content for about and contact
+*	Layout site with all pages, setup API calls for the gallery categories
