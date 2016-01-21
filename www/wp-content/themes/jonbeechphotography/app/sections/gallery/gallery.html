@@ -1,17 +1,11 @@
 <div ng-controller="GalleryController as ctrl" class="ng-cloak">
-	<div id="header" class="clearfix">
-		<h1 class="logo">jonbeechphotography</h1>
-        <div class="main-menu">
-            <ul>
-                <li><a href="/#/gallery/all/1" class="active">Photos</a></li>
-                <li><a href="">About</a></li>
-                <li><a href="">Contact</a></li>
-            </ul>
-        </div>
-	</div>
+    <site-header selected-index="0"></site-header>
 
 	<!-- Grid -->
-	<image-grid image-data="ctrl.imageData"></image-grid>
+
+    <div class="page-content">
+	    <image-grid image-data="ctrl.imageData"></image-grid>
+    </div>
 
 	<!-- Controls -->
 	<div class="footer" ng-show="ctrl.imageData.length > 0">

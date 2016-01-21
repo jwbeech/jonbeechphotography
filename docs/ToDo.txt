@@ -1,17 +1,19 @@
 Styling:
 -----------------------------------
-*	Design new skin
-*	Implement skin
 *	Implement mobile versions of the skin
 
 Functional:
 -----------------------------------
 *	Update the layout algorithm to layout images better
+*	Write about page
+*	Design contact page
+*	Build about page
+*	Build about page
+*	Look into cloudbase
 
 
 Deployment:
 -----------------------------------
-*	Get domain jonathanbeechphotography.co.za
 *	Set site live
 
 

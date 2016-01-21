@@ -98,9 +98,12 @@ a.fadeInUp:hover {
 	}
 }
 
+.page-content{
+	padding: 50px 60px 0 60px;
+	text-align: left;
+}
 
 .imageGrid{
-	padding: 50px 60px 0 60px;
 
 	.cell{
 		float: left;
