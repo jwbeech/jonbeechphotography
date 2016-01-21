@@ -6,7 +6,8 @@ $json		= json_decode(file_get_contents(dirname(__FILE__) . "/fileregister.json")
 $fileData	= $env == "development" ? $json["development"] : $json["production"];
 
 $fonts		= "http://fonts.googleapis.com/css?family=";
-$fonts		.= "Raleway:100,200,300,400,500,600,700,900,800";
+//$fonts		.= "Raleway:100,200,300,400,500,600,700,900,800";
+$fonts		.= "Open+Sans:300,400,700";
 
 $fileData["css"][]	= $fonts;
 ?>

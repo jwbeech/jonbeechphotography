@@ -1,8 +1,14 @@
 <div ng-controller="GalleryController as ctrl" class="ng-cloak">
 	<div id="header" class="clearfix">
-		<h1 id="logo">jonbeechphotography</h1>
+		<h1 class="logo">jonbeechphotography</h1>
+        <div class="main-menu">
+            <ul>
+                <li><a href="/#/gallery/all/1" class="active">Photos</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Contact</a></li>
+            </ul>
+        </div>
 	</div>
-
 
 	<!-- Grid -->
 	<image-grid image-data="ctrl.imageData"></image-grid>
@@ -10,8 +16,8 @@
 	<!-- Controls -->
 	<div class="footer" ng-show="ctrl.imageData.length > 0">
 		<div class="clearfix pageButtonHolder">
-			<button type="button" class="btn pageBtn left" ng-show="ctrl.showPrev" ng-click="ctrl.fetchPreviousPage()">back <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></button>
-			<button type="button" class="btn pageBtn right" ng-show="ctrl.showNext" ng-click="ctrl.fetchNextPage()">Next <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button>
+			<a href="" class="button big left" ng-show="ctrl.showPrev" ng-click="ctrl.fetchPreviousPage()">Back <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></a>
+			<a href="" class="button big right" ng-show="ctrl.showNext" ng-click="ctrl.fetchNextPage()">Next <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a>
 		</div>
 	</div>
 </div>

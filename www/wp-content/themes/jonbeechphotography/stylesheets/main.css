@@ -7,11 +7,12 @@ html {
 }
 
 body {
-	background: #fff;
+	background: #f7f8fa;
 	text-align: center;
-	font-weight: 300;
-	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	font-family: 'Open Sans', sans-serif;
 	color: #cdcdcd;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 img.gears {
@@ -28,23 +29,64 @@ a.fadeInUp:hover {
 
 #header {
 	width: 100%;
-	height: 55px;
-	background: url("../images/header-shadow.gif") 0 0 repeat-x;
+	height: 50px;
+	background: #fff;
+	border-top: 1px solid #eeeff2;
+	text-align: left;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-#header #logo {
-	margin: 12px 0 0 20px;
-	padding: 0 14px;
+#header .logo {
+	background: url("/wp-content/themes/jonbeechphotography/images/profile.jpg") no-repeat 0 0;
+	margin: 5px 0 0 60px;
+	padding: 5px 0 9px 50px;
+	color: #525558;
+	display: inline-block;
 	font-size: 18px;
-	font-weight: 300;
-	letter-spacing: 2px;
-	text-align: left;
-	color: #fff;
-	border-left: 2px solid #fff;
+	font-weight: 400;
+	position: absolute;
+}
+
+#header .main-menu {
+	text-align: center;
+}
+
+#header .main-menu ul {
+	margin: 0 auto;
+	list-style-type: none;
+	padding: 0;
+}
+
+#header .main-menu ul li {
+	margin: 0px 10px 0 10px;
+	padding: 0;
+	display: inline-block;
+}
+
+#header .main-menu ul li a {
+	font-size: 12px;
+	line-height: 14px;
+	font-weight: 700;
+	padding: 18px 0 16px 0;
+	display: block;
+	text-transform: uppercase;
+	color: #71767a;
+	text-decoration: none;
+}
+
+#header .main-menu ul li a:hover, #header .main-menu ul li a.active {
+	color: #0099e5;
+	border-bottom: 2px solid #0099e5;
 }
 
 .imageGrid {
-	padding: 0 20px 20px 20px;
+	padding: 50px 60px 0 60px;
 }
 
 .imageGrid .cell {
@@ -55,7 +97,6 @@ a.fadeInUp:hover {
 	width: 100%;
 	height: 100%;
 	float: left;
-	border-radius: 5px;
 	overflow: hidden;
 	position: relative;
 }
@@ -72,24 +113,27 @@ a.fadeInUp:hover {
 	right: 0;
 	z-index: 50;
 	background: rgba(0, 0, 0, 0.5);
-	-webkit-transform: translate3d(0, 50px, 0);
-	transform: translate3d(0, 50px, 0);
-	-o-transition: all 0.1s ease-in;
-	-ms-transition: all 0.1s ease-in;
-	-moz-transition: all 0.1s ease-in;
-	-webkit-transition: all 0.1s ease-in;
-	transition: all 0.1s ease-in;
+	-webkit-transform: translate3d(0, 10px, 0);
+	transform: translate3d(0, 10px, 0);
+	opacity: 0;
+	filter: alpha(opacity=0);
+	-o-transition: all 0.2s ease-out;
+	-ms-transition: all 0.2s ease-out;
+	-moz-transition: all 0.2s ease-out;
+	-webkit-transition: all 0.2s ease-out;
+	transition: all 0.2s ease-out;
 }
 
 .imageGrid .cell a.imgBorder .info .content {
 	color: #fff;
-	border-left: 1px solid #fff;
 	padding-left: 10px;
 	margin: 15px 15px;
 	text-align: left;
 }
 
 .imageGrid .cell a.imgBorder:hover .info {
+	opacity: 1;
+	filter: alpha(opacity=100);
 	-webkit-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0);
 }
@@ -106,14 +150,138 @@ a.fadeInUp:hover {
 	font-size: 16px;
 }
 
+.viewer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: #000;
+}
+
+.viewer .imageHolder {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	bottom: 10px;
+	left: 10px;
+}
+
+.viewer .imageHolder img {
+	max-width: 100%;
+	max-height: 100%;
+	border: none;
+}
+
+.viewer .imageHolder a {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	min-width: 10%;
+	display: block;
+	background-position: center center;
+	background-repeat: no-repeat;
+	opacity: 0.1;
+	filter: alpha(opacity=10);
+	text-indent: -99999px;
+}
+
+.viewer .imageHolder a:hover {
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+
+.viewer .imageHolder a.prevBtn {
+	left: 0;
+	background-image: url("../images/leftArrow.svg");
+}
+
+.viewer .imageHolder a.nextBtn {
+	right: 0;
+	background-image: url("../images/rightArrow.svg");
+}
+
+.viewer a.close {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	color: #fff;
+}
+
+.button {
+	background-color: #0099e5;
+	border: 1px solid #08c;
+	border-radius: 3px;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset;
+	color: #ffffff;
+	cursor: pointer;
+	display: inline-block;
+	font-weight: bold;
+	height: 30px;
+	line-height: 28px;
+	padding: 0 10px;
+	text-decoration: none;
+	text-shadow: 0 1px 0 #08c;
+	transition: background-color 0.1s ease-in-out 0s;
+}
+
+.button:hover {
+	text-decoration: none;
+	background-color: #00aaff;
+	color: #ffffff;
+}
+
+.button.big {
+	height: 50px;
+	font-size: 20px;
+	line-height: 48px;
+	padding: 0 30px;
+	text-transform: uppercase;
+}
+
 .footer {
-	padding: 20px 20px 150px 20px;
-	background: #f7f8fa;
+	padding: 20px 60px 100px 60px;
 }
 
 .footer .pageButtonHolder {
 	/*display: inline-block;
 		margin: 0 auto;*/
+}
+
+.footer .pageButtonHolder .button.left {
+	float: left;
+}
+
+.footer .pageButtonHolder .button.left span {
+	display: none;
+	left: 30px;
+	-o-transition: left 0.3s ease-out;
+	-ms-transition: left 0.3s ease-out;
+	-moz-transition: left 0.3s ease-out;
+	-webkit-transition: left 0.3s ease-out;
+	transition: left 0.3s ease-out;
+}
+
+.footer .pageButtonHolder .button.left:hover span {
+	left: 20px;
+}
+
+.footer .pageButtonHolder .button.right {
+	float: right;
+}
+
+.footer .pageButtonHolder .button.right span {
+	display: none;
+	right: 30px;
+	-o-transition: right 0.3s ease-out;
+	-ms-transition: right 0.3s ease-out;
+	-moz-transition: right 0.3s ease-out;
+	-webkit-transition: right 0.3s ease-out;
+	transition: right 0.3s ease-out;
+}
+
+.footer .pageButtonHolder .button.right:hover span {
+	right: 20px;
 }
 
 .footer .pageButtonHolder .btn {
@@ -130,38 +298,4 @@ a.fadeInUp:hover {
 	font-size: 26px;
 	position: absolute;
 	color: #93999e;
-}
-
-.footer .pageButtonHolder .btn.left {
-	float: left;
-}
-
-.footer .pageButtonHolder .btn.left span {
-	left: 30px;
-	-o-transition: left 0.3s ease-out;
-	-ms-transition: left 0.3s ease-out;
-	-moz-transition: left 0.3s ease-out;
-	-webkit-transition: left 0.3s ease-out;
-	transition: left 0.3s ease-out;
-}
-
-.footer .pageButtonHolder .btn.left:hover span {
-	left: 20px;
-}
-
-.footer .pageButtonHolder .btn.right {
-	float: right;
-}
-
-.footer .pageButtonHolder .btn.right span {
-	right: 30px;
-	-o-transition: right 0.3s ease-out;
-	-ms-transition: right 0.3s ease-out;
-	-moz-transition: right 0.3s ease-out;
-	-webkit-transition: right 0.3s ease-out;
-	transition: right 0.3s ease-out;
-}
-
-.footer .pageButtonHolder .btn.right:hover span {
-	right: 20px;
 }

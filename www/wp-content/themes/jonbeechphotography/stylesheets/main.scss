@@ -20,12 +20,13 @@ html {
 }
 
 body {
-	background: #fff;
+	background: #f7f8fa;
 	text-align: center;
 
-	font-weight: 300;
-	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	font-family: 'Open Sans', sans-serif;
 	color:#cdcdcd;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 img.gears{
@@ -43,26 +44,63 @@ a.fadeInUp:hover {
 
 #header{
 	width: 100%;
-	height: $headerHeight;
+	height: 50px;
 
-	background: url("../images/header-shadow.gif") 0 0 repeat-x;
+	background: #fff;
+	border-top:1px solid #eeeff2;
+	//border-bottom:1px solid #eeeff2;
+	text-align: left;
 
-	#logo{
-		$paddingV:12px;
-		margin: $paddingV 0 0 20px;
-		padding: 0 14px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	@include box-shadow(0 1px 3px rgba(0, 0, 0, 0.05));
+
+	.logo{
+		background: url("/wp-content/themes/jonbeechphotography/images/profile.jpg") no-repeat 0 0;
+		margin: 5px 0 0 60px;
+		padding: 5px 0 9px 50px;
+		color: #525558;
+		display: inline-block;
 		font-size: 18px;
-		font-weight: 300;
-		letter-spacing: 2px;
-		text-align: left;
-		color: #fff;
-		border-left: 2px solid #fff;
+		font-weight: 400;
+		position: absolute;
+	}
+
+	.main-menu{
+		text-align: center;
+		ul{
+			margin: 0 auto;
+			list-style-type: none;
+			padding:0;
+			li{
+				margin: 0px 10px 0 10px;
+				padding: 0;
+				display: inline-block;
+				a{
+					font-size: 12px;
+					line-height: 14px;
+					font-weight: 700;
+					padding: 18px 0 16px 0;
+					display: block;
+					text-transform: uppercase;
+					color: #71767a;
+					text-decoration: none;
+				}
+				a:hover, a.active{
+					color: #0099e5;
+					border-bottom: 2px solid #0099e5;
+				}
+			}
+		}
 	}
 }
 
 
 .imageGrid{
-	padding: 0 $imageGap $imageGap $imageGap;
+	padding: 50px 60px 0 60px;
 
 	.cell{
 		float: left;
@@ -72,7 +110,7 @@ a.fadeInUp:hover {
 			width: 100%;
 			height: 100%;
 			float: left;
-			border-radius: 5px;
+			//border-radius: 5px;
 			overflow: hidden;
 			position: relative;
 
@@ -90,12 +128,13 @@ a.fadeInUp:hover {
 
 				background: rgba(0, 0, 0, 0.5);
 
-				@include translate3d(0, 50px, 0);
-				@include transition(all 0.1s ease-in);
+				@include translate3d(0, 10px, 0);
+				@include opacity(0);
+				@include transition(all 0.2s ease-out);
 
 				.content{
 					color: #fff;
-					border-left: 1px solid #fff;
+					//border-left: 1px solid #fff;
 					padding-left: 10px;
 					margin: 15px 15px;
 					text-align: left;
@@ -103,6 +142,7 @@ a.fadeInUp:hover {
 			}
 
 			&:hover .info{
+				@include opacity(1);
 				@include translate3d(0, 0, 0);
 			}
 		}
@@ -119,13 +159,126 @@ a.fadeInUp:hover {
 	}
 }
 
+
+.viewer{
+	$edge: 10px;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: #000;
+
+	.imageHolder{
+		position: absolute;
+		top: $edge;
+		right: $edge;
+		bottom: $edge;
+		left: $edge;
+
+
+		img{
+			max-width: 100%;
+			max-height: 100%;
+			border: none;
+		}
+
+		a{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			min-width: 10%;
+			display: block;
+			background-position: center center;
+			background-repeat: no-repeat;
+			@include opacity(0.1);
+			text-indent: -99999px;
+		}
+		a:hover{
+			@include opacity(1);
+		}
+		a.prevBtn{
+			left: 0;
+			background-image: url("../images/leftArrow.svg");
+		}
+		a.nextBtn{
+			right: 0;
+			background-image: url("../images/rightArrow.svg");
+		}
+	}
+
+	a.close{
+		position: absolute;
+		top: 30px;
+		right: 30px;
+		color:#fff;
+	}
+}
+
+.button {
+	background-color: #0099e5;
+	border: 1px solid #08c;
+	border-radius: 3px;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset;
+	color: #ffffff;
+	cursor: pointer;
+	display: inline-block;
+	font-weight: bold;
+	height: 30px;
+	line-height: 28px;
+	padding: 0 10px;
+	text-decoration: none;
+	text-shadow: 0 1px 0 #08c;
+	transition: background-color 0.1s ease-in-out 0s;
+
+	&:hover{
+		text-decoration: none;
+		background-color: #00aaff;
+		color: #ffffff;
+	}
+
+	&.big{
+		height: 50px;
+		font-size: 20px;
+		line-height: 48px;
+		padding: 0 30px;
+		text-transform: uppercase;
+	}
+}
+
 .footer{
-	padding: $imageGap $imageGap 150px $imageGap;
-	background: #f7f8fa;
+	padding: 20px 60px 100px 60px;
 
 	.pageButtonHolder{
 		/*display: inline-block;
 		margin: 0 auto;*/
+		.button {
+
+			&.left{
+				float: left;
+				span{
+					display: none;
+					left: 30px;
+					@include transition(left 0.3s ease-out);
+				}
+				&:hover span{
+					left: 20px;
+				}
+			}
+			&.right{
+				float: right;
+				span{
+					display: none;
+					right: 30px;
+					@include transition(right 0.3s ease-out);
+				}
+				&:hover span{
+					right: 20px;
+				}
+			}
+		}
+
 		.btn{
 			padding: 20px 100px;
 			color: #525558;
@@ -139,27 +292,6 @@ a.fadeInUp:hover {
 				font-size: 26px;
 				position: absolute;
 				color: #93999e;
-			}
-
-			&.left{
-				float: left;
-				span{
-					left: 30px;
-					@include transition(left 0.3s ease-out);
-				}
-				&:hover span{
-					left: 20px;
-				}
-			}
-			&.right{
-				float: right;
-				span{
-					right: 30px;
-					@include transition(right 0.3s ease-out);
-				}
-				&:hover span{
-					right: 20px;
-				}
 			}
 		}
 	}
